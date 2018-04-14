@@ -71,6 +71,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ItemPicker";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Item Chooser";
             this.ResumeLayout(false);
             this.PerformLayout();

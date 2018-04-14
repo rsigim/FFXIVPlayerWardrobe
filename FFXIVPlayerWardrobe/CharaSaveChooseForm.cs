@@ -35,6 +35,12 @@ namespace FFXIVPlayerWardrobe
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (charaSaveListBox.SelectedIndex == -1)
+            {
+                Close();
+                return;
+            }
+
             Choice = _dats[charaSaveListBox.SelectedIndex].CustomizeBytes;
             Close();
         }

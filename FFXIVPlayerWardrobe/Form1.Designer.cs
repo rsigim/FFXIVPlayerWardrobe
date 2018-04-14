@@ -36,10 +36,23 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeNewDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.freezeValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gearSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bodyGearTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.openItemsHeadButton = new System.Windows.Forms.Button();
             this.freezeGearCheckBox = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mainWepTextBox = new System.Windows.Forms.TextBox();
@@ -65,17 +78,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.openItemsHeadButton = new System.Windows.Forms.Button();
             this.customizeChooserButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +124,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
+            this.gearSetToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -151,6 +155,29 @@
             this.freezeValuesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.freezeValuesToolStripMenuItem.Text = "Freeze values(persist after zoning)";
             this.freezeValuesToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.freezeValuesToolStripMenuItem_CheckStateChanged);
+            // 
+            // gearSetToolStripMenuItem
+            // 
+            this.gearSetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+            this.gearSetToolStripMenuItem.Name = "gearSetToolStripMenuItem";
+            this.gearSetToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.gearSetToolStripMenuItem.Text = "Gear Set";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -217,6 +244,106 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gear";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(325, 226);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(31, 23);
+            this.button10.TabIndex = 45;
+            this.button10.Text = "...";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.openItemsLRingButton_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(325, 173);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(31, 23);
+            this.button9.TabIndex = 44;
+            this.button9.Text = "...";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.openItemsRRingButton_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(325, 120);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(31, 23);
+            this.button8.TabIndex = 43;
+            this.button8.Text = "...";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.openItemsWristsButton_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(325, 72);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(31, 23);
+            this.button7.TabIndex = 42;
+            this.button7.Text = "...";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.openItemsNeckButton_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(325, 26);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 23);
+            this.button6.TabIndex = 41;
+            this.button6.Text = "...";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.openItemsEarsButton_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(107, 226);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 23);
+            this.button5.TabIndex = 40;
+            this.button5.Text = "...";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.openItemsFeetButton_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(107, 173);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 23);
+            this.button4.TabIndex = 39;
+            this.button4.Text = "...";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.openItemsLegsButton_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(107, 120);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 23);
+            this.button3.TabIndex = 38;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.openItemsHandsButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(107, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 23);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.openItemsBodyButton_Click);
+            // 
+            // openItemsHeadButton
+            // 
+            this.openItemsHeadButton.Location = new System.Drawing.Point(107, 26);
+            this.openItemsHeadButton.Name = "openItemsHeadButton";
+            this.openItemsHeadButton.Size = new System.Drawing.Size(31, 23);
+            this.openItemsHeadButton.TabIndex = 36;
+            this.openItemsHeadButton.Text = "...";
+            this.openItemsHeadButton.UseVisualStyleBackColor = true;
+            this.openItemsHeadButton.Click += new System.EventHandler(this.openItemsHeadButton_Click);
             // 
             // freezeGearCheckBox
             // 
@@ -429,16 +556,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Customize";
             // 
-            // openItemsHeadButton
-            // 
-            this.openItemsHeadButton.Location = new System.Drawing.Point(107, 26);
-            this.openItemsHeadButton.Name = "openItemsHeadButton";
-            this.openItemsHeadButton.Size = new System.Drawing.Size(31, 23);
-            this.openItemsHeadButton.TabIndex = 36;
-            this.openItemsHeadButton.Text = "...";
-            this.openItemsHeadButton.UseVisualStyleBackColor = true;
-            this.openItemsHeadButton.Click += new System.EventHandler(this.openItemsHeadButton_Click);
-            // 
             // customizeChooserButton
             // 
             this.customizeChooserButton.Location = new System.Drawing.Point(379, 38);
@@ -448,96 +565,6 @@
             this.customizeChooserButton.Text = "...";
             this.customizeChooserButton.UseVisualStyleBackColor = true;
             this.customizeChooserButton.Click += new System.EventHandler(this.customizeChooserButton_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(107, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(31, 23);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.openItemsBodyButton_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(107, 120);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 23);
-            this.button3.TabIndex = 38;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.openItemsHandsButton_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(107, 173);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 23);
-            this.button4.TabIndex = 39;
-            this.button4.Text = "...";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.openItemsLegsButton_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(107, 226);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(31, 23);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "...";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.openItemsFeetButton_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(325, 26);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(31, 23);
-            this.button6.TabIndex = 41;
-            this.button6.Text = "...";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.openItemsEarsButton_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(325, 72);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(31, 23);
-            this.button7.TabIndex = 42;
-            this.button7.Text = "...";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.openItemsNeckButton_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(325, 120);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(31, 23);
-            this.button8.TabIndex = 43;
-            this.button8.Text = "...";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.openItemsWristsButton_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(325, 173);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(31, 23);
-            this.button9.TabIndex = 44;
-            this.button9.Text = "...";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.openItemsRRingButton_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(325, 226);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(31, 23);
-            this.button10.TabIndex = 45;
-            this.button10.Text = "...";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.openItemsLRingButton_Click);
             // 
             // Form1
             // 
@@ -558,7 +585,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FFXIVPlayerWardrobe 1.2";
+            this.Text = "FFXIVPlayerWardrobe 1.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -620,6 +647,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem gearSetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }
 
