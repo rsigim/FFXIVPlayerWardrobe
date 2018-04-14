@@ -1,0 +1,625 @@
+﻿namespace FFXIVPlayerWardrobe
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Erforderliche Designervariable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Verwendete Ressourcen bereinigen.
+        /// </summary>
+        /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Vom Windows Form-Designer generierter Code
+
+        /// <summary>
+        /// Erforderliche Methode für die Designerunterstützung.
+        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.restoreOriginalLookButton = new System.Windows.Forms.Button();
+            this.offsetLabel = new System.Windows.Forms.Label();
+            this.customizeTextBox = new System.Windows.Forms.TextBox();
+            this.customizeApplyButton = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeNewDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.freezeValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bodyGearTextBox = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.freezeGearCheckBox = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.mainWepTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lRingGearTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.wristGearTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.rRingGearTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.earGearTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.neckGearTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.feetGearTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.handsGearTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.legsGearTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.headGearTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.openItemsHeadButton = new System.Windows.Forms.Button();
+            this.customizeChooserButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // restoreOriginalLookButton
+            // 
+            this.restoreOriginalLookButton.Location = new System.Drawing.Point(12, 372);
+            this.restoreOriginalLookButton.Name = "restoreOriginalLookButton";
+            this.restoreOriginalLookButton.Size = new System.Drawing.Size(479, 23);
+            this.restoreOriginalLookButton.TabIndex = 0;
+            this.restoreOriginalLookButton.Text = "Restore Original";
+            this.restoreOriginalLookButton.UseVisualStyleBackColor = true;
+            this.restoreOriginalLookButton.Click += new System.EventHandler(this.restoreOriginalLookButton_Click);
+            // 
+            // offsetLabel
+            // 
+            this.offsetLabel.AutoSize = true;
+            this.offsetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F);
+            this.offsetLabel.Location = new System.Drawing.Point(15, 397);
+            this.offsetLabel.Name = "offsetLabel";
+            this.offsetLabel.Size = new System.Drawing.Size(92, 13);
+            this.offsetLabel.TabIndex = 1;
+            this.offsetLabel.Text = "CustomizeOffset: -";
+            // 
+            // customizeTextBox
+            // 
+            this.customizeTextBox.Location = new System.Drawing.Point(12, 40);
+            this.customizeTextBox.Name = "customizeTextBox";
+            this.customizeTextBox.Size = new System.Drawing.Size(361, 20);
+            this.customizeTextBox.TabIndex = 2;
+            // 
+            // customizeApplyButton
+            // 
+            this.customizeApplyButton.Location = new System.Drawing.Point(416, 38);
+            this.customizeApplyButton.Name = "customizeApplyButton";
+            this.customizeApplyButton.Size = new System.Drawing.Size(75, 23);
+            this.customizeApplyButton.TabIndex = 3;
+            this.customizeApplyButton.Text = "Apply";
+            this.customizeApplyButton.UseVisualStyleBackColor = true;
+            this.customizeApplyButton.Click += new System.EventHandler(this.customizeApplyButton_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(503, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.makeNewDefaultToolStripMenuItem,
+            this.freezeValuesToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // makeNewDefaultToolStripMenuItem
+            // 
+            this.makeNewDefaultToolStripMenuItem.Name = "makeNewDefaultToolStripMenuItem";
+            this.makeNewDefaultToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.makeNewDefaultToolStripMenuItem.Text = "Reload all values";
+            this.makeNewDefaultToolStripMenuItem.Click += new System.EventHandler(this.makeNewDefaultToolStripMenuItem_Click);
+            // 
+            // freezeValuesToolStripMenuItem
+            // 
+            this.freezeValuesToolStripMenuItem.CheckOnClick = true;
+            this.freezeValuesToolStripMenuItem.Name = "freezeValuesToolStripMenuItem";
+            this.freezeValuesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.freezeValuesToolStripMenuItem.Text = "Freeze values(persist after zoning)";
+            this.freezeValuesToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.freezeValuesToolStripMenuItem_CheckStateChanged);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // bodyGearTextBox
+            // 
+            this.bodyGearTextBox.Location = new System.Drawing.Point(9, 74);
+            this.bodyGearTextBox.Name = "bodyGearTextBox";
+            this.bodyGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.bodyGearTextBox.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.openItemsHeadButton);
+            this.groupBox1.Controls.Add(this.freezeGearCheckBox);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.mainWepTextBox);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.lRingGearTextBox);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.wristGearTextBox);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.rRingGearTextBox);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.earGearTextBox);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.neckGearTextBox);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.feetGearTextBox);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.handsGearTextBox);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.legsGearTextBox);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.headGearTextBox);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.bodyGearTextBox);
+            this.groupBox1.Location = new System.Drawing.Point(12, 67);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(479, 299);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Gear";
+            // 
+            // freezeGearCheckBox
+            // 
+            this.freezeGearCheckBox.AutoSize = true;
+            this.freezeGearCheckBox.Checked = true;
+            this.freezeGearCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.freezeGearCheckBox.Location = new System.Drawing.Point(340, 274);
+            this.freezeGearCheckBox.Name = "freezeGearCheckBox";
+            this.freezeGearCheckBox.Size = new System.Drawing.Size(58, 17);
+            this.freezeGearCheckBox.TabIndex = 35;
+            this.freezeGearCheckBox.Text = "Freeze";
+            this.freezeGearCheckBox.UseVisualStyleBackColor = true;
+            this.freezeGearCheckBox.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(187, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Main Weapon";
+            // 
+            // mainWepTextBox
+            // 
+            this.mainWepTextBox.Location = new System.Drawing.Point(187, 28);
+            this.mainWepTextBox.Name = "mainWepTextBox";
+            this.mainWepTextBox.Size = new System.Drawing.Size(92, 20);
+            this.mainWepTextBox.TabIndex = 33;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(362, 212);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Left Ring";
+            // 
+            // lRingGearTextBox
+            // 
+            this.lRingGearTextBox.Location = new System.Drawing.Point(362, 228);
+            this.lRingGearTextBox.Name = "lRingGearTextBox";
+            this.lRingGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.lRingGearTextBox.TabIndex = 31;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(362, 106);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Wrists";
+            // 
+            // wristGearTextBox
+            // 
+            this.wristGearTextBox.Location = new System.Drawing.Point(362, 122);
+            this.wristGearTextBox.Name = "wristGearTextBox";
+            this.wristGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.wristGearTextBox.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(362, 159);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 13);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Right Ring";
+            // 
+            // rRingGearTextBox
+            // 
+            this.rRingGearTextBox.Location = new System.Drawing.Point(362, 175);
+            this.rRingGearTextBox.Name = "rRingGearTextBox";
+            this.rRingGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.rRingGearTextBox.TabIndex = 27;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(362, 12);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(28, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Ears";
+            // 
+            // earGearTextBox
+            // 
+            this.earGearTextBox.Location = new System.Drawing.Point(362, 28);
+            this.earGearTextBox.Name = "earGearTextBox";
+            this.earGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.earGearTextBox.TabIndex = 25;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(362, 58);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(33, 13);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Neck";
+            // 
+            // neckGearTextBox
+            // 
+            this.neckGearTextBox.Location = new System.Drawing.Point(362, 74);
+            this.neckGearTextBox.Name = "neckGearTextBox";
+            this.neckGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.neckGearTextBox.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 212);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Feet";
+            // 
+            // feetGearTextBox
+            // 
+            this.feetGearTextBox.Location = new System.Drawing.Point(9, 228);
+            this.feetGearTextBox.Name = "feetGearTextBox";
+            this.feetGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.feetGearTextBox.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 106);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Hands";
+            // 
+            // handsGearTextBox
+            // 
+            this.handsGearTextBox.Location = new System.Drawing.Point(9, 122);
+            this.handsGearTextBox.Name = "handsGearTextBox";
+            this.handsGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.handsGearTextBox.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 159);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Legs";
+            // 
+            // legsGearTextBox
+            // 
+            this.legsGearTextBox.Location = new System.Drawing.Point(9, 175);
+            this.legsGearTextBox.Name = "legsGearTextBox";
+            this.legsGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.legsGearTextBox.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Head";
+            // 
+            // headGearTextBox
+            // 
+            this.headGearTextBox.Location = new System.Drawing.Point(9, 28);
+            this.headGearTextBox.Name = "headGearTextBox";
+            this.headGearTextBox.Size = new System.Drawing.Size(92, 20);
+            this.headGearTextBox.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(6, 280);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "id,variant,stain";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Body";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(398, 270);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Apply";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.WriteGear_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Customize";
+            // 
+            // openItemsHeadButton
+            // 
+            this.openItemsHeadButton.Location = new System.Drawing.Point(107, 26);
+            this.openItemsHeadButton.Name = "openItemsHeadButton";
+            this.openItemsHeadButton.Size = new System.Drawing.Size(31, 23);
+            this.openItemsHeadButton.TabIndex = 36;
+            this.openItemsHeadButton.Text = "...";
+            this.openItemsHeadButton.UseVisualStyleBackColor = true;
+            this.openItemsHeadButton.Click += new System.EventHandler(this.openItemsHeadButton_Click);
+            // 
+            // customizeChooserButton
+            // 
+            this.customizeChooserButton.Location = new System.Drawing.Point(379, 38);
+            this.customizeChooserButton.Name = "customizeChooserButton";
+            this.customizeChooserButton.Size = new System.Drawing.Size(31, 23);
+            this.customizeChooserButton.TabIndex = 37;
+            this.customizeChooserButton.Text = "...";
+            this.customizeChooserButton.UseVisualStyleBackColor = true;
+            this.customizeChooserButton.Click += new System.EventHandler(this.customizeChooserButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(107, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 23);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.openItemsBodyButton_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(107, 120);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 23);
+            this.button3.TabIndex = 38;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.openItemsHandsButton_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(107, 173);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 23);
+            this.button4.TabIndex = 39;
+            this.button4.Text = "...";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.openItemsLegsButton_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(107, 226);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 23);
+            this.button5.TabIndex = 40;
+            this.button5.Text = "...";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.openItemsFeetButton_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(325, 26);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 23);
+            this.button6.TabIndex = 41;
+            this.button6.Text = "...";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.openItemsEarsButton_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(325, 72);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(31, 23);
+            this.button7.TabIndex = 42;
+            this.button7.Text = "...";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.openItemsNeckButton_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(325, 120);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(31, 23);
+            this.button8.TabIndex = 43;
+            this.button8.Text = "...";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.openItemsWristsButton_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(325, 173);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(31, 23);
+            this.button9.TabIndex = 44;
+            this.button9.Text = "...";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.openItemsRRingButton_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(325, 226);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(31, 23);
+            this.button10.TabIndex = 45;
+            this.button10.Text = "...";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.openItemsLRingButton_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(503, 411);
+            this.Controls.Add(this.customizeChooserButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.customizeApplyButton);
+            this.Controls.Add(this.customizeTextBox);
+            this.Controls.Add(this.offsetLabel);
+            this.Controls.Add(this.restoreOriginalLookButton);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.Name = "Form1";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FFXIVPlayerWardrobe 1.2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button restoreOriginalLookButton;
+        private System.Windows.Forms.Label offsetLabel;
+        private System.Windows.Forms.TextBox customizeTextBox;
+        private System.Windows.Forms.Button customizeApplyButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.TextBox bodyGearTextBox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox lRingGearTextBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox wristGearTextBox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox rRingGearTextBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox earGearTextBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox neckGearTextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox feetGearTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox handsGearTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox legsGearTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox headGearTextBox;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeNewDefaultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem freezeValuesToolStripMenuItem;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox mainWepTextBox;
+        private System.Windows.Forms.CheckBox freezeGearCheckBox;
+        private System.Windows.Forms.Button openItemsHeadButton;
+        private System.Windows.Forms.Button customizeChooserButton;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+    }
+}
+
