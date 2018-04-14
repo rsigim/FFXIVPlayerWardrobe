@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FFXIVMonReborn;
+using FFXIVPlayerWardrobe.Properties;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
 
@@ -142,8 +143,6 @@ namespace FFXIVPlayerWardrobe
 
                 _worker.DoWork += WorkerOnDoWork;
                 _worker.WorkerSupportsCancellation = true;
-
-                AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             }
             catch (Exception exc)
             {
@@ -153,16 +152,6 @@ namespace FFXIVPlayerWardrobe
 #endif
             }
 
-        }
-
-        private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
-        {
-            var exc = unhandledExceptionEventArgs.ExceptionObject as Exception;
-#if DEBUG
-            throw unhandledExceptionEventArgs.ExceptionObject as Exception;
-#else
-            MessageBox.Show("An error occured. This may be caused by malformatted inputs.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-#endif
         }
 
         private void ScanWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -293,8 +282,15 @@ namespace FFXIVPlayerWardrobe
 
         private void customizeApplyButton_Click(object sender, EventArgs e)
         {
-            _currentCustomize = Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty));
-            WriteCurrentCustomize();
+            try
+            {
+                _currentCustomize = Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty));
+                WriteCurrentCustomize();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void WriteCurrentCustomize()
@@ -308,7 +304,7 @@ namespace FFXIVPlayerWardrobe
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-                "FFXIVPlayerWardrobe - amibu/goaaats\n\nUsing Memory.dll by erfg(https://github.com/erfg12/memory.dll)");
+                $"FFXIVPlayerWardrobe - amibu/goaaats\n\nUsing Memory.dll by erfg(https://github.com/erfg12/memory.dll)\n\nItem table: {Resources.item_exh_en.Split('\n').Length - 1} entries");
         }
 
         private void RestoreDefaultGear()
@@ -348,20 +344,27 @@ namespace FFXIVPlayerWardrobe
 
         private void WriteGear_Click(object sender, EventArgs e)
         {
-            _headGearC = CommaToGearTuple(headGearTextBox.Text);
-            _bodyGearC = CommaToGearTuple(bodyGearTextBox.Text);
-            _handsGearC = CommaToGearTuple(handsGearTextBox.Text);
-            _legsGearC = CommaToGearTuple(legsGearTextBox.Text);
-            _feetGearC = CommaToGearTuple(feetGearTextBox.Text);
-            _earGearC = CommaToGearTuple(earGearTextBox.Text);
-            _neckGearC = CommaToGearTuple(neckGearTextBox.Text);
-            _wristGearC = CommaToGearTuple(wristGearTextBox.Text);
-            _rRingGearC = CommaToGearTuple(rRingGearTextBox.Text);
-            _lRingGearC = CommaToGearTuple(lRingGearTextBox.Text);
+            try
+            {
+                _headGearC = CommaToGearTuple(headGearTextBox.Text);
+                _bodyGearC = CommaToGearTuple(bodyGearTextBox.Text);
+                _handsGearC = CommaToGearTuple(handsGearTextBox.Text);
+                _legsGearC = CommaToGearTuple(legsGearTextBox.Text);
+                _feetGearC = CommaToGearTuple(feetGearTextBox.Text);
+                _earGearC = CommaToGearTuple(earGearTextBox.Text);
+                _neckGearC = CommaToGearTuple(neckGearTextBox.Text);
+                _wristGearC = CommaToGearTuple(wristGearTextBox.Text);
+                _rRingGearC = CommaToGearTuple(rRingGearTextBox.Text);
+                _lRingGearC = CommaToGearTuple(lRingGearTextBox.Text);
 
-            _mainWepC = CommaToWepTuple(mainWepTextBox.Text);
+                _mainWepC = CommaToWepTuple(mainWepTextBox.Text);
 
-            WriteCurrentGearTuples();
+                WriteCurrentGearTuples();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

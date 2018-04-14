@@ -129,10 +129,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\item.exh_de.csv" />
     <None Include="Resources\item.exh_en.csv" />
-    <None Include="Resources\item.exh_fr.csv" />
-    <None Include="Resources\item.exh_ja.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
