@@ -19,6 +19,7 @@ namespace FFXIVPlayerWardrobe
         public ResidentSelectForm(ExdCsvReader.Resident[] residents)
         {
             InitializeComponent();
+            textBox1.SetWatermark("Search...");
 
             DataTable table = new DataTable();
             table.Columns.Add("ID");
@@ -34,22 +35,50 @@ namespace FFXIVPlayerWardrobe
                 table.Rows.Add(r);
             }
 
-            dataGridView1.DataSource = table;
+            residentGridView.DataSource = table;
 
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            residentGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            residentGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            residentGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             _residents = residents;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count == 0)
+            if(residentGridView.SelectedCells.Count == 0)
                 Close();
 
-            Choice = _residents[dataGridView1.CurrentCell.RowIndex];
+            Choice = _residents[residentGridView.CurrentCell.RowIndex];
             Close();
+        }
+
+        private void searchNextButton_Click(object sender, EventArgs e)
+        {
+            string term = textBox1.Text.ToLower();
+            int start = 0;
+
+            if (residentGridView.SelectedCells.Count != 0)
+                start = residentGridView.SelectedCells[0].RowIndex + 1;
+
+            for (int row = start; row < residentGridView.RowCount; row++)
+            {
+                if (residentGridView.Rows[row].Cells["Name"].Value.ToString().ToLower().Contains(term))
+                {
+                    residentGridView.ClearSelection();
+                    residentGridView.CurrentCell = residentGridView.Rows[row].Cells[0];
+                    residentGridView.FirstDisplayedScrollingRowIndex = row;
+                    break;
+                }
+            }
+        }
+
+        private void copyCustomizeToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (residentGridView.SelectedCells.Count == 0)
+                return;
+
+            Clipboard.SetText(Util.ByteArrayToString(_residents[residentGridView.CurrentCell.RowIndex].Gear.Customize));
         }
     }
 }

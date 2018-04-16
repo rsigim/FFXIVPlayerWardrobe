@@ -36,6 +36,7 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeNewDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.freezeValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noNpcCustomizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gearSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,11 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bodyGearTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.offWepTextBox = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -79,7 +85,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.customizeChooserButton = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -137,7 +142,8 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.makeNewDefaultToolStripMenuItem,
-            this.freezeValuesToolStripMenuItem});
+            this.freezeValuesToolStripMenuItem,
+            this.noNpcCustomizeToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -145,7 +151,7 @@
             // makeNewDefaultToolStripMenuItem
             // 
             this.makeNewDefaultToolStripMenuItem.Name = "makeNewDefaultToolStripMenuItem";
-            this.makeNewDefaultToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.makeNewDefaultToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.makeNewDefaultToolStripMenuItem.Text = "Reload all values";
             this.makeNewDefaultToolStripMenuItem.Click += new System.EventHandler(this.makeNewDefaultToolStripMenuItem_Click);
             // 
@@ -153,9 +159,16 @@
             // 
             this.freezeValuesToolStripMenuItem.CheckOnClick = true;
             this.freezeValuesToolStripMenuItem.Name = "freezeValuesToolStripMenuItem";
-            this.freezeValuesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.freezeValuesToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.freezeValuesToolStripMenuItem.Text = "Freeze values(persist after zoning)";
             this.freezeValuesToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.freezeValuesToolStripMenuItem_CheckStateChanged);
+            // 
+            // noNpcCustomizeToolStripMenuItem
+            // 
+            this.noNpcCustomizeToolStripMenuItem.CheckOnClick = true;
+            this.noNpcCustomizeToolStripMenuItem.Name = "noNpcCustomizeToolStripMenuItem";
+            this.noNpcCustomizeToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.noNpcCustomizeToolStripMenuItem.Text = "Don\'t apply customize for selected NPCs";
             // 
             // gearSetToolStripMenuItem
             // 
@@ -204,6 +217,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button13);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.offWepTextBox);
             this.groupBox1.Controls.Add(this.button11);
             this.groupBox1.Controls.Add(this.button10);
             this.groupBox1.Controls.Add(this.button9);
@@ -246,6 +263,52 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gear";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(265, 26);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(31, 23);
+            this.button13.TabIndex = 50;
+            this.button13.Text = "...";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.openItemsMHButton_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(265, 70);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(31, 23);
+            this.button12.TabIndex = 49;
+            this.button12.Text = "...";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.openItemsOHButton_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(167, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 13);
+            this.label9.TabIndex = 48;
+            this.label9.Text = "Off Weapon";
+            // 
+            // offWepTextBox
+            // 
+            this.offWepTextBox.Location = new System.Drawing.Point(167, 72);
+            this.offWepTextBox.Name = "offWepTextBox";
+            this.offWepTextBox.Size = new System.Drawing.Size(92, 20);
+            this.offWepTextBox.TabIndex = 47;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(198, 120);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 46;
+            this.button11.Text = "Select NPC";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -363,7 +426,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(187, 12);
+            this.label8.Location = new System.Drawing.Point(167, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 34;
@@ -371,7 +434,7 @@
             // 
             // mainWepTextBox
             // 
-            this.mainWepTextBox.Location = new System.Drawing.Point(187, 28);
+            this.mainWepTextBox.Location = new System.Drawing.Point(167, 28);
             this.mainWepTextBox.Name = "mainWepTextBox";
             this.mainWepTextBox.Size = new System.Drawing.Size(92, 20);
             this.mainWepTextBox.TabIndex = 33;
@@ -568,16 +631,6 @@
             this.customizeChooserButton.UseVisualStyleBackColor = true;
             this.customizeChooserButton.Click += new System.EventHandler(this.customizeChooserButton_Click);
             // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(198, 120);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 46;
-            this.button11.Text = "Select NPC";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,6 +716,11 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.ToolStripMenuItem noNpcCustomizeToolStripMenuItem;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox offWepTextBox;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
     }
 }
 

@@ -302,7 +302,7 @@ namespace FFXIVMonReborn
                                 switch (fCount - 1)
                                 {
                                     case 70:
-                                        gear.HeadGear = new GearTuple(model, bytes[3], 0);
+                                        gear.HeadGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 71:
                                         gear.HeadGear = new GearTuple(gear.HeadGear.Item1, gear.HeadGear.Item2,
@@ -311,28 +311,28 @@ namespace FFXIVMonReborn
                                     case 72:
                                         break;
                                     case 73:
-                                        gear.BodyGear = new GearTuple(model, bytes[3], 0);
+                                        gear.BodyGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 74:
                                         gear.BodyGear = new GearTuple(gear.BodyGear.Item1, gear.BodyGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 75:
-                                        gear.HandsGear = new GearTuple(model, bytes[3], 0);
+                                        gear.HandsGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 76:
                                         gear.HandsGear = new GearTuple(gear.HandsGear.Item1, gear.HandsGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 77:
-                                        gear.LegsGear = new GearTuple(model, bytes[3], 0);
+                                        gear.LegsGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 78:
                                         gear.LegsGear = new GearTuple(gear.LegsGear.Item1, gear.LegsGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 79:
-                                        gear.FeetGear = new GearTuple(model, bytes[3], 0);
+                                        gear.FeetGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 80:
                                         gear.FeetGear = new GearTuple(gear.FeetGear.Item1, gear.FeetGear.Item2,
@@ -340,35 +340,35 @@ namespace FFXIVMonReborn
                                         break;
 
                                     case 81:
-                                        gear.EarGear = new GearTuple(model, bytes[3], 0);
+                                        gear.EarGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 82:
                                         gear.EarGear = new GearTuple(gear.EarGear.Item1, gear.EarGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 83:
-                                        gear.NeckGear = new GearTuple(model, bytes[3], 0);
+                                        gear.NeckGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 84:
                                         gear.NeckGear = new GearTuple(gear.NeckGear.Item1, gear.NeckGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 85:
-                                        gear.WristGear = new GearTuple(model, bytes[3], 0);
+                                        gear.WristGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 86:
                                         gear.WristGear = new GearTuple(gear.WristGear.Item1, gear.WristGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 87:
-                                        gear.LRingGear = new GearTuple(model, bytes[3], 0);
+                                        gear.LRingGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 88:
                                         gear.LRingGear = new GearTuple(gear.LRingGear.Item1, gear.LRingGear.Item2,
                                             int.Parse(field));
                                         break;
                                     case 89:
-                                        gear.RRingGear = new GearTuple(model, bytes[3], 0);
+                                        gear.RRingGear = new GearTuple(model, bytes[2], 0);
                                         break;
                                     case 90:
                                         gear.RRingGear = new GearTuple(gear.RRingGear.Item1, gear.RRingGear.Item2,
@@ -379,11 +379,6 @@ namespace FFXIVMonReborn
                         }
 
                         Console.WriteLine($"{id} - {wepCSV} - {dDataCount}");
-
-                        /*
-                        if(id.Contains("1006725"))
-                            Debugger.Break();
-                        */
 
                         gear.Customize = customize.ToArray();
 

@@ -22,6 +22,7 @@ namespace FFXIVPlayerWardrobe
         public GearTuple LRingGear { get; set; }
 
         public WepTuple MainWep { get; set; }
+        public WepTuple OffWep { get; set; }
 
         public byte[] Customize { get; set; }
     }

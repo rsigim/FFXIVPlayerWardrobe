@@ -28,42 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.residentGridView = new System.Windows.Forms.DataGridView();
+            this.okButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchNextButton = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyCustomizeToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.residentGridView)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // residentGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1304, 332);
-            this.dataGridView1.TabIndex = 0;
+            this.residentGridView.AllowUserToAddRows = false;
+            this.residentGridView.AllowUserToDeleteRows = false;
+            this.residentGridView.AllowUserToResizeColumns = false;
+            this.residentGridView.AllowUserToResizeRows = false;
+            this.residentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.residentGridView.ContextMenuStrip = this.contextMenuStrip1;
+            this.residentGridView.Location = new System.Drawing.Point(12, 12);
+            this.residentGridView.MultiSelect = false;
+            this.residentGridView.Name = "residentGridView";
+            this.residentGridView.ReadOnly = true;
+            this.residentGridView.Size = new System.Drawing.Size(924, 332);
+            this.residentGridView.TabIndex = 0;
             // 
-            // button1
+            // okButton
             // 
-            this.button1.Location = new System.Drawing.Point(1241, 350);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.okButton.Location = new System.Drawing.Point(861, 350);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(14, 352);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(174, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // searchNextButton
+            // 
+            this.searchNextButton.Location = new System.Drawing.Point(194, 350);
+            this.searchNextButton.Name = "searchNextButton";
+            this.searchNextButton.Size = new System.Drawing.Size(75, 23);
+            this.searchNextButton.TabIndex = 3;
+            this.searchNextButton.Text = "Search Next";
+            this.searchNextButton.UseVisualStyleBackColor = true;
+            this.searchNextButton.Click += new System.EventHandler(this.searchNextButton_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyCustomizeToClipboardToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 48);
+            // 
+            // copyCustomizeToClipboardToolStripMenuItem
+            // 
+            this.copyCustomizeToClipboardToolStripMenuItem.Name = "copyCustomizeToClipboardToolStripMenuItem";
+            this.copyCustomizeToClipboardToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.copyCustomizeToClipboardToolStripMenuItem.Text = "Copy customize to clipboard";
+            this.copyCustomizeToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyCustomizeToClipboardToolStripMenuItem_Click);
             // 
             // ResidentSelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 379);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(948, 379);
+            this.Controls.Add(this.searchNextButton);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.residentGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -71,7 +111,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Resident";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.residentGridView)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,7 +120,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView residentGridView;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button searchNextButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyCustomizeToClipboardToolStripMenuItem;
     }
 }

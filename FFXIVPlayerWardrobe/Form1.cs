@@ -33,7 +33,8 @@ namespace FFXIVPlayerWardrobe
         private const int GEAR_RRING_OFF = -0x50;
         private const int GEAR_LRING_OFF = -0x4C;
 
-        private const int WEP_MAIN_OFF = -0x2F0;
+        private const int WEP_MAINH_OFF = -0x2F0;
+        private const int WEP_OFFH_OFF = -0x2F8;
 
         public Form1()
         {
@@ -53,6 +54,11 @@ namespace FFXIVPlayerWardrobe
         {
             try
             {
+#if DEBUG
+                CheckResidentList();
+                CheckItemList();
+#endif
+
                 this.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
                 if (Properties.Settings.Default.FirstLaunch)
@@ -176,7 +182,7 @@ namespace FFXIVPlayerWardrobe
             _gearSet.RRingGear = ReadGearTuple(_customizeOffset + GEAR_RRING_OFF);
             _gearSet.LRingGear = ReadGearTuple(_customizeOffset + GEAR_LRING_OFF);
 
-            _gearSet.MainWep = ReadWepTuple(_customizeOffset + WEP_MAIN_OFF);
+            _gearSet.MainWep = ReadWepTuple(_customizeOffset + WEP_MAINH_OFF);
         }
 
         private void FillDefaults()
@@ -195,6 +201,7 @@ namespace FFXIVPlayerWardrobe
             lRingGearTextBox.Text = GearTupleToComma(_gearSet.LRingGear);
 
             mainWepTextBox.Text = WepTupleToComma(_gearSet.MainWep);
+            offWepTextBox.Text = WepTupleToComma(_gearSet.OffWep);
         }
 
         private void FillCustoms()
@@ -213,6 +220,7 @@ namespace FFXIVPlayerWardrobe
             lRingGearTextBox.Text = GearTupleToComma(_cGearSet.LRingGear);
 
             mainWepTextBox.Text = WepTupleToComma(_cGearSet.MainWep);
+            offWepTextBox.Text = WepTupleToComma(_cGearSet.OffWep);
         }
 
         private WepTuple ReadWepTuple(IntPtr offset)
@@ -305,7 +313,7 @@ namespace FFXIVPlayerWardrobe
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-                $"FFXIVPlayerWardrobe - amibu/goaaats\n\nUsing Memory.dll by erfg(https://github.com/erfg12/memory.dll)\n\nItem table: {Resources.item_exh_en.Split('\n').Length - 1} entries");
+                $"FFXIVPlayerWardrobe - amibu/goaaats\n\nUsing Memory.dll by erfg(https://github.com/erfg12/memory.dll)\n\nItem table: {Resources.item_exh_en.Split('\n').Length - 1} entries\nResident info table: {Resources.enpcresident_exh_en.Split('\n').Length - 1} entries\nResident base table: {Resources.enpcbase_exh.Split('\n').Length - 1} entries");
         }
 
         private void RestoreDefaultGear()
@@ -321,7 +329,8 @@ namespace FFXIVPlayerWardrobe
             _memory.writeBytes(_customizeOffset + GEAR_RRING_OFF, GearTupleToByteAry(_gearSet.RRingGear));
             _memory.writeBytes(_customizeOffset + GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.LRingGear));
 
-            _memory.writeBytes(_customizeOffset + WEP_MAIN_OFF, WepTupleToByteAry(_gearSet.MainWep));
+            _memory.writeBytes(_customizeOffset + WEP_MAINH_OFF, WepTupleToByteAry(_gearSet.MainWep));
+            _memory.writeBytes(_customizeOffset + WEP_OFFH_OFF, WepTupleToByteAry(_gearSet.OffWep));
         }
 
         private void WriteCurrentGearTuples()
@@ -340,7 +349,8 @@ namespace FFXIVPlayerWardrobe
             _memory.writeBytes(_customizeOffset + GEAR_RRING_OFF, GearTupleToByteAry(_cGearSet.RRingGear));
             _memory.writeBytes(_customizeOffset + GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.LRingGear));
 
-            _memory.writeBytes(_customizeOffset + WEP_MAIN_OFF, WepTupleToByteAry(_cGearSet.MainWep));
+            _memory.writeBytes(_customizeOffset + WEP_MAINH_OFF, WepTupleToByteAry(_cGearSet.MainWep));
+            _memory.writeBytes(_customizeOffset + WEP_OFFH_OFF, WepTupleToByteAry(_cGearSet.OffWep));
         }
 
         private void WriteGear_Click(object sender, EventArgs e)
@@ -359,6 +369,7 @@ namespace FFXIVPlayerWardrobe
                 _cGearSet.LRingGear = CommaToGearTuple(lRingGearTextBox.Text);
 
                 _cGearSet.MainWep = CommaToWepTuple(mainWepTextBox.Text);
+                _cGearSet.OffWep = CommaToWepTuple(offWepTextBox.Text);
 
                 WriteCurrentGearTuples();
             }
@@ -467,6 +478,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsNeckButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
             p.ShowDialog();
 
@@ -476,6 +488,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsWristsButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
             p.ShowDialog();
 
@@ -485,6 +498,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsRRingButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             p.ShowDialog();
 
@@ -494,11 +508,32 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsLRingButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             p.ShowDialog();
 
             if (p.Choice != null)
                 lRingGearTextBox.Text = p.Choice.ModelMain;
+        }
+
+        private void openItemsMHButton_Click(object sender, EventArgs e)
+        {
+            CheckItemList();
+            ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+            p.ShowDialog();
+
+            if (p.Choice != null)
+                mainWepTextBox.Text = p.Choice.ModelMain;
+        }
+
+        private void openItemsOHButton_Click(object sender, EventArgs e)
+        {
+            CheckItemList();
+            ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelOff.Contains("0,0,0,0")).ToArray());
+            p.ShowDialog();
+
+            if (p.Choice != null)
+                offWepTextBox.Text = p.Choice.ModelOff;
         }
 
         private void customizeChooserButton_Click(object sender, EventArgs e)
@@ -508,6 +543,8 @@ namespace FFXIVPlayerWardrobe
 
             if (chooser.Choice != null)
                 customizeTextBox.Text = Util.ByteArrayToString(chooser.Choice);
+
+            customizeApplyButton_Click(null, null);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -542,6 +579,10 @@ namespace FFXIVPlayerWardrobe
             {
                 _cGearSet = JsonConvert.DeserializeObject<GearSet>(File.ReadAllText(openFileDialog.FileName));
 
+                // Backwards compatibility
+                if(_cGearSet.OffWep == null)
+                    _cGearSet.OffWep = new WepTuple(0,0,0,0);
+
                 FillCustoms();
                 WriteCurrentGearTuples();
                 WriteCurrentCustomize();
@@ -557,7 +598,14 @@ namespace FFXIVPlayerWardrobe
             if (f.Choice == null)
                 return;
 
-            _cGearSet = f.Choice.Gear;
+            var gs = f.Choice.Gear;
+
+            if (noNpcCustomizeToolStripMenuItem.Checked)
+            {
+                gs.Customize = _cGearSet.Customize;
+            }
+
+            _cGearSet = gs;
 
             FillCustoms();
             WriteCurrentGearTuples();
