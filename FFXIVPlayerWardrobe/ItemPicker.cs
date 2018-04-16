@@ -38,16 +38,13 @@ namespace FFXIVPlayerWardrobe
             Close();
         }
 
-        private const uint ECM_FIRST = 0x1500;
-        private const uint EM_SETCUEBANNER = ECM_FIRST + 1;
-
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-            string filter = searchTextBox.Text;
+            string filter = searchTextBox.Text.ToLower();
             listBox1.Items.Clear();
-            foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.Contains(filter)))
+            foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
-                listBox1.Items.Add(game.Name);
+                listBox1.Items.Add(game);
             }
         }
     }

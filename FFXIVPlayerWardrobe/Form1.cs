@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
@@ -52,6 +53,8 @@ namespace FFXIVPlayerWardrobe
         {
             try
             {
+                this.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
                 if (Properties.Settings.Default.FirstLaunch)
                 {
                     MessageBox.Show(
@@ -66,7 +69,7 @@ namespace FFXIVPlayerWardrobe
 
                 if (chooser.Choice == null)
                 {
-                    MessageBox.Show("No character chosen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No character chosen.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if !DEBUG
                     Environment.Exit(0);
 #endif
@@ -88,7 +91,7 @@ namespace FFXIVPlayerWardrobe
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("An error occurred reading the process list.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred reading the process list.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if !DEBUG
                     Environment.Exit(0);
 #endif
@@ -96,7 +99,7 @@ namespace FFXIVPlayerWardrobe
 
                 if (ffxivProcess == null)
                 {
-                    MessageBox.Show("FFXIV is not running.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("FFXIV is not running.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if !DEBUG
                     Environment.Exit(0);
 #endif
@@ -105,7 +108,7 @@ namespace FFXIVPlayerWardrobe
                 _memory = new Mem();
                 if (!_memory.OpenProcess(ffxivProcess.ProcessName))
                 {
-                    MessageBox.Show("An error occurred opening the FFXIV process.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred opening the FFXIV process.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if !DEBUG
                     Environment.Exit(0);
 #endif
@@ -126,7 +129,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("An error occurred during initialization.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred during initialization.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if !DEBUG
                 Environment.Exit(0);
 #endif
@@ -287,7 +290,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -361,7 +364,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -390,8 +393,21 @@ namespace FFXIVPlayerWardrobe
             }
         }
 
+        private void CheckItemList()
+        {
+            if(_exdProvider.Items == null)
+                _exdProvider.MakeItemList();
+        }
+
+        private void CheckResidentList()
+        {
+            if (_exdProvider.Residents == null)
+                _exdProvider.MakeResidentList();
+        }
+
         private void openItemsHeadButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
             p.ShowDialog();
 
@@ -401,6 +417,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsBodyButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
             p.ShowDialog();
 
@@ -410,6 +427,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsHandsButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
             p.ShowDialog();
 
@@ -419,6 +437,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsLegsButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
             p.ShowDialog();
 
@@ -428,6 +447,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsFeetButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
             p.ShowDialog();
 
@@ -437,6 +457,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsEarsButton_Click(object sender, EventArgs e)
         {
+            CheckItemList();
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
             p.ShowDialog();
 
@@ -506,7 +527,7 @@ namespace FFXIVPlayerWardrobe
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("Could not save gearset.\n\n" + exc, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Could not save gearset.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -525,6 +546,22 @@ namespace FFXIVPlayerWardrobe
                 WriteCurrentGearTuples();
                 WriteCurrentCustomize();
             }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            CheckResidentList();
+            ResidentSelectForm f = new ResidentSelectForm(_exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
+            f.ShowDialog();
+
+            if (f.Choice == null)
+                return;
+
+            _cGearSet = f.Choice.Gear;
+
+            FillCustoms();
+            WriteCurrentGearTuples();
+            WriteCurrentCustomize();
         }
     }
 }
