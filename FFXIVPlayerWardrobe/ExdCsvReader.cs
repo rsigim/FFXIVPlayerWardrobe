@@ -282,10 +282,14 @@ namespace FFXIVMonReborn
                                 }
                             }
 
-                            //TODO: OffHand
-                            if (fCount == 67 /*|| fCount == 69*/)
+                            if (fCount == 67)
                             {
                                 gear.MainWep = Form1.CommaToWepTuple(field);
+                            }
+
+                            if (fCount == 69)
+                            {
+                                gear.OffWep = Form1.CommaToWepTuple(field);
                             }
 
                             if (fCount >= 71 && fCount <= 90)

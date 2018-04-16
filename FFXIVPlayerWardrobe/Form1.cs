@@ -64,7 +64,7 @@ namespace FFXIVPlayerWardrobe
                 if (Properties.Settings.Default.FirstLaunch)
                 {
                     MessageBox.Show(
-                        "Please save the character data you are going to log in as in the FFXIV Lobby(right click->Save Appearance Data).\nThen, log in and press OK.");
+                        "Please save the character data you are going to log in as in the FFXIV Lobby(right click->Save Appearance Data).\nThen, log in and press OK.\n\n!!!DISCLAIMER!!!\nNever use the Aesthetician while using this tool.\nI'm not responsible for any problems that might occur.");
                     Properties.Settings.Default.FirstLaunch = false;
                     Properties.Settings.Default.Save();
                 }
@@ -183,6 +183,7 @@ namespace FFXIVPlayerWardrobe
             _gearSet.LRingGear = ReadGearTuple(_customizeOffset + GEAR_LRING_OFF);
 
             _gearSet.MainWep = ReadWepTuple(_customizeOffset + WEP_MAINH_OFF);
+            _gearSet.OffWep = ReadWepTuple(_customizeOffset + WEP_OFFH_OFF);
         }
 
         private void FillDefaults()
