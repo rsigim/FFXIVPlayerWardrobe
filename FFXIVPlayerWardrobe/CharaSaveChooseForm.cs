@@ -25,7 +25,7 @@ namespace FFXIVPlayerWardrobe
 
             foreach (var saveDat in _dats)
             {
-                var gender = saveDat.CustomizeBytes[1] == 0 ? "♀️" : "♂️";
+                var gender = saveDat.CustomizeBytes[1] == 1 ? "♀️" : "♂️";
                 charaSaveListBox.Items.Add(
                     $"{ByteToRaceDict[saveDat.CustomizeBytes[0]]} {gender} - {saveDat.Description}");
             }
