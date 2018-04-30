@@ -68,12 +68,6 @@
     <Compile Include="CharaSaveChooseForm.Designer.cs">
       <DependentUpon>CharaSaveChooseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomizeEditView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomizeEditView.Designer.cs">
-      <DependentUpon>CustomizeEditView.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExdCsvReader.cs" />
     <Compile Include="FindCustomizeOffset.cs" />
     <Compile Include="Form1.cs">
@@ -109,9 +103,6 @@
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="CharaSaveChooseForm.resx">
       <DependentUpon>CharaSaveChooseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomizeEditView.resx">
-      <DependentUpon>CustomizeEditView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

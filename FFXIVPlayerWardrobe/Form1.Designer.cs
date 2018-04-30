@@ -108,6 +108,7 @@
             this.offsetLabel.Size = new System.Drawing.Size(92, 13);
             this.offsetLabel.TabIndex = 1;
             this.offsetLabel.Text = "CustomizeOffset: -";
+            this.offsetLabel.Click += new System.EventHandler(this.offsetLabel_Click);
             // 
             // customizeTextBox
             // 
