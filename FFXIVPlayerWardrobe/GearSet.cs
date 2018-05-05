@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
 
@@ -25,5 +26,15 @@ namespace FFXIVPlayerWardrobe
         public WepTuple OffWep { get; set; }
 
         public byte[] Customize { get; set; }
+
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static GearSet FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<GearSet>(json);
+        }
     }
 }

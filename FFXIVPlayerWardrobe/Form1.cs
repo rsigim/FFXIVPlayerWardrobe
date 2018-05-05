@@ -149,7 +149,12 @@ namespace FFXIVPlayerWardrobe
         private void ScanWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             _customizeOffset = (IntPtr)e.Result;
+
+#if DEBUG
             offsetLabel.Text = "CustomizeOffset: " + _customizeOffset.ToString("X");
+#else
+            offsetLabel.Text = "";
+#endif
 
             SetupDefaults();
             FillDefaults();
@@ -563,7 +568,7 @@ namespace FFXIVPlayerWardrobe
                     WriteGear_Click(null, null);
                     customizeApplyButton_Click(null, null);
 
-                    File.WriteAllText(fileDialog.FileName, JsonConvert.SerializeObject(_cGearSet));
+                    File.WriteAllText(fileDialog.FileName, _cGearSet.ToJson());
                     MessageBox.Show($"Capture saved to {fileDialog.FileName}.", "FFXIVMon Reborn", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 catch (Exception exc)
@@ -581,7 +586,7 @@ namespace FFXIVPlayerWardrobe
 
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                _cGearSet = JsonConvert.DeserializeObject<GearSet>(File.ReadAllText(openFileDialog.FileName));
+                _cGearSet = GearSet.FromJson(File.ReadAllText(openFileDialog.FileName));
 
                 // Backwards compatibility
                 if(_cGearSet.OffWep == null)
