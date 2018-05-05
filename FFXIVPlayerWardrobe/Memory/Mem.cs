@@ -14,7 +14,7 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 
-namespace FFXIVPlayerWardrobe
+namespace FFXIVPlayerWardrobe.Memory
 {
     /// <summary>
     /// Memory.dll class. Full documentation at https://github.com/erfg12/memory.dll/wiki

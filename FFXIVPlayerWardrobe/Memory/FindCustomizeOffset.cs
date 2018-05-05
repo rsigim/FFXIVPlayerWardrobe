@@ -7,9 +7,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FFXIVMonReborn;
 
-namespace FFXIVPlayerWardrobe
+namespace FFXIVPlayerWardrobe.Memory
 {
     public static class FindCustomizeOffset
     {
@@ -29,15 +28,15 @@ namespace FFXIVPlayerWardrobe
 
             foreach (var hit in hits)
             {
-                string name = Encoding.UTF8.GetString(memory.readBytes((hit + Form1.CHARA_NAME_OFF).ToString("X"), 32));
+                string name = Encoding.UTF8.GetString(memory.readBytes((hit + Definitions.CHARA_NAME_OFF).ToString("X"), 32));
                 Debug.WriteLine(name);
                 if (name.Split(' ')[0].All(IsValidFFXIVNameChar))
                 {
                     if (checkCounter)
                     {
-                        var counter1 = memory.readBytes((hit + Form1.CHARA_RUN_COUNTER_OFF).ToString("X"), 4);
+                        var counter1 = memory.readBytes((hit + Definitions.CHARA_RUN_COUNTER_OFF).ToString("X"), 4);
                         Thread.Sleep(100);
-                        var counter2 = memory.readBytes((hit + Form1.CHARA_RUN_COUNTER_OFF).ToString("X"), 4);
+                        var counter2 = memory.readBytes((hit + Definitions.CHARA_RUN_COUNTER_OFF).ToString("X"), 4);
 
                         if (counter1.SequenceEqual(counter2))
                         {

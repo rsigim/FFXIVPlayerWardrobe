@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FFXIVPlayerWardrobe;
 using FFXIVPlayerWardrobe.Properties;
 using Microsoft.VisualBasic.FileIO;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
 
-namespace FFXIVMonReborn
+namespace FFXIVPlayerWardrobe
 {
     public class ExdCsvReader
     {
@@ -65,7 +60,7 @@ namespace FFXIVMonReborn
 
             public string MakeGearString()
             {
-                return $"{Form1.GearTupleToComma(Gear.HeadGear)} - {Form1.GearTupleToComma(Gear.BodyGear)} - {Form1.GearTupleToComma(Gear.HandsGear)} - {Form1.GearTupleToComma(Gear.LegsGear)} - {Form1.GearTupleToComma(Gear.FeetGear)} - {Form1.GearTupleToComma(Gear.EarGear)} - {Form1.GearTupleToComma(Gear.NeckGear)} - {Form1.GearTupleToComma(Gear.WristGear)} - {Form1.GearTupleToComma(Gear.LRingGear)} - {Form1.GearTupleToComma(Gear.RRingGear)}";
+                return $"{MainForm.GearTupleToComma(Gear.HeadGear)} - {MainForm.GearTupleToComma(Gear.BodyGear)} - {MainForm.GearTupleToComma(Gear.HandsGear)} - {MainForm.GearTupleToComma(Gear.LegsGear)} - {MainForm.GearTupleToComma(Gear.FeetGear)} - {MainForm.GearTupleToComma(Gear.EarGear)} - {MainForm.GearTupleToComma(Gear.NeckGear)} - {MainForm.GearTupleToComma(Gear.WristGear)} - {MainForm.GearTupleToComma(Gear.LRingGear)} - {MainForm.GearTupleToComma(Gear.RRingGear)}";
             }
         }
 
@@ -183,8 +178,6 @@ namespace FFXIVMonReborn
             }
             catch (IOException exc)
             {
-                MessageBox.Show("[ExdCsvReader] Failed to parse CSV sheets. This isn't your fault.\n\n" + exc, "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 Items = null;
 #if DEBUG
                 throw exc;
@@ -284,12 +277,12 @@ namespace FFXIVMonReborn
 
                             if (fCount == 67)
                             {
-                                gear.MainWep = Form1.CommaToWepTuple(field);
+                                gear.MainWep = MainForm.CommaToWepTuple(field);
                             }
 
                             if (fCount == 69)
                             {
-                                gear.OffWep = Form1.CommaToWepTuple(field);
+                                gear.OffWep = MainForm.CommaToWepTuple(field);
                             }
 
                             if (fCount >= 71 && fCount <= 90)
@@ -394,8 +387,6 @@ namespace FFXIVMonReborn
             }
             catch (IOException exc)
             {
-                MessageBox.Show("[ExdCsvReader] Failed to parse CSV sheets. This isn't your fault.\n\n" + exc, "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 Residents = null;
 #if DEBUG
                 throw exc;

@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FFXIVMonReborn;
+using FFXIVPlayerWardrobe.Memory;
 using FFXIVPlayerWardrobe.Properties;
 using Newtonsoft.Json;
 using GearTuple = System.Tuple<int, int, int>;
@@ -20,26 +20,9 @@ using WepTuple = System.Tuple<int, int, int, int>;
 
 namespace FFXIVPlayerWardrobe
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public const int GEAR_HEAD_OFF = -0x70;
-        public const int GEAR_BODY_OFF = -0x6C;
-        public const int GEAR_HANDS_OFF = -0x68;
-        public const int GEAR_LEGS_OFF = -0x64;
-        public const int GEAR_FEET_OFF = -0x60;
-        public const int GEAR_EAR_OFF = -0x5C;
-        public const int GEAR_NECK_OFF = -0x58;
-        public const int GEAR_WRIST_OFF = -0x54;
-        public const int GEAR_RRING_OFF = -0x50;
-        public const int GEAR_LRING_OFF = -0x4C;
-
-        public const int WEP_MAINH_OFF = -0x2F0;
-        public const int WEP_OFFH_OFF = -0x2F8;
-
-        public const int CHARA_NAME_OFF = -0x15C0;
-        public const int CHARA_RUN_COUNTER_OFF = -0x790;
-
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -58,8 +41,8 @@ namespace FFXIVPlayerWardrobe
             try
             {
 #if DEBUG
-                CheckResidentList();
-                CheckItemList();
+                //CheckResidentList();
+                //CheckItemList();
 #endif
 
                 this.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -179,19 +162,19 @@ namespace FFXIVPlayerWardrobe
         {
             _gearSet.Customize = _memory.readBytes(_customizeOffset.ToString("X"), 26);
 
-            _gearSet.HeadGear = ReadGearTuple(_customizeOffset + GEAR_HEAD_OFF);
-            _gearSet.BodyGear = ReadGearTuple(_customizeOffset + GEAR_BODY_OFF);
-            _gearSet.HandsGear = ReadGearTuple(_customizeOffset + GEAR_HANDS_OFF);
-            _gearSet.LegsGear = ReadGearTuple(_customizeOffset + GEAR_LEGS_OFF);
-            _gearSet.FeetGear = ReadGearTuple(_customizeOffset + GEAR_FEET_OFF);
-            _gearSet.EarGear = ReadGearTuple(_customizeOffset + GEAR_EAR_OFF);
-            _gearSet.NeckGear = ReadGearTuple(_customizeOffset + GEAR_NECK_OFF);
-            _gearSet.WristGear = ReadGearTuple(_customizeOffset + GEAR_WRIST_OFF);
-            _gearSet.RRingGear = ReadGearTuple(_customizeOffset + GEAR_RRING_OFF);
-            _gearSet.LRingGear = ReadGearTuple(_customizeOffset + GEAR_LRING_OFF);
+            _gearSet.HeadGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_HEAD_OFF);
+            _gearSet.BodyGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_BODY_OFF);
+            _gearSet.HandsGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_HANDS_OFF);
+            _gearSet.LegsGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_LEGS_OFF);
+            _gearSet.FeetGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_FEET_OFF);
+            _gearSet.EarGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_EAR_OFF);
+            _gearSet.NeckGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_NECK_OFF);
+            _gearSet.WristGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_WRIST_OFF);
+            _gearSet.RRingGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_RRING_OFF);
+            _gearSet.LRingGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_LRING_OFF);
 
-            _gearSet.MainWep = ReadWepTuple(_customizeOffset + WEP_MAINH_OFF);
-            _gearSet.OffWep = ReadWepTuple(_customizeOffset + WEP_OFFH_OFF);
+            _gearSet.MainWep = ReadWepTuple(_customizeOffset + Definitions.WEP_MAINH_OFF);
+            _gearSet.OffWep = ReadWepTuple(_customizeOffset + Definitions.WEP_OFFH_OFF);
         }
 
         private void FillDefaults()
@@ -327,19 +310,19 @@ namespace FFXIVPlayerWardrobe
 
         private void RestoreDefaultGear()
         {
-            _memory.writeBytes(_customizeOffset + GEAR_HEAD_OFF, GearTupleToByteAry(_gearSet.HeadGear));
-            _memory.writeBytes(_customizeOffset + GEAR_BODY_OFF, GearTupleToByteAry(_gearSet.BodyGear));
-            _memory.writeBytes(_customizeOffset + GEAR_HANDS_OFF, GearTupleToByteAry(_gearSet.HandsGear));
-            _memory.writeBytes(_customizeOffset + GEAR_LEGS_OFF, GearTupleToByteAry(_gearSet.LegsGear));
-            _memory.writeBytes(_customizeOffset + GEAR_FEET_OFF, GearTupleToByteAry(_gearSet.FeetGear));
-            _memory.writeBytes(_customizeOffset + GEAR_EAR_OFF, GearTupleToByteAry(_gearSet.EarGear));
-            _memory.writeBytes(_customizeOffset + GEAR_NECK_OFF, GearTupleToByteAry(_gearSet.NeckGear));
-            _memory.writeBytes(_customizeOffset + GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.WristGear));
-            _memory.writeBytes(_customizeOffset + GEAR_RRING_OFF, GearTupleToByteAry(_gearSet.RRingGear));
-            _memory.writeBytes(_customizeOffset + GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.LRingGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_HEAD_OFF, GearTupleToByteAry(_gearSet.HeadGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_BODY_OFF, GearTupleToByteAry(_gearSet.BodyGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_HANDS_OFF, GearTupleToByteAry(_gearSet.HandsGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_LEGS_OFF, GearTupleToByteAry(_gearSet.LegsGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_FEET_OFF, GearTupleToByteAry(_gearSet.FeetGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_EAR_OFF, GearTupleToByteAry(_gearSet.EarGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_NECK_OFF, GearTupleToByteAry(_gearSet.NeckGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.WristGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_RRING_OFF, GearTupleToByteAry(_gearSet.RRingGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.LRingGear));
 
-            _memory.writeBytes(_customizeOffset + WEP_MAINH_OFF, WepTupleToByteAry(_gearSet.MainWep));
-            _memory.writeBytes(_customizeOffset + WEP_OFFH_OFF, WepTupleToByteAry(_gearSet.OffWep));
+            _memory.writeBytes(_customizeOffset + Definitions.WEP_MAINH_OFF, WepTupleToByteAry(_gearSet.MainWep));
+            _memory.writeBytes(_customizeOffset + Definitions.WEP_OFFH_OFF, WepTupleToByteAry(_gearSet.OffWep));
         }
 
         private void WriteCurrentGearTuples()
@@ -347,19 +330,19 @@ namespace FFXIVPlayerWardrobe
             if (_cGearSet.HeadGear == null)
                 return;
 
-            _memory.writeBytes(_customizeOffset + GEAR_HEAD_OFF, GearTupleToByteAry(_cGearSet.HeadGear));
-            _memory.writeBytes(_customizeOffset + GEAR_BODY_OFF, GearTupleToByteAry(_cGearSet.BodyGear));
-            _memory.writeBytes(_customizeOffset + GEAR_HANDS_OFF, GearTupleToByteAry(_cGearSet.HandsGear));
-            _memory.writeBytes(_customizeOffset + GEAR_LEGS_OFF, GearTupleToByteAry(_cGearSet.LegsGear));
-            _memory.writeBytes(_customizeOffset + GEAR_FEET_OFF, GearTupleToByteAry(_cGearSet.FeetGear));
-            _memory.writeBytes(_customizeOffset + GEAR_EAR_OFF, GearTupleToByteAry(_cGearSet.EarGear));
-            _memory.writeBytes(_customizeOffset + GEAR_NECK_OFF, GearTupleToByteAry(_cGearSet.NeckGear));
-            _memory.writeBytes(_customizeOffset + GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.WristGear));
-            _memory.writeBytes(_customizeOffset + GEAR_RRING_OFF, GearTupleToByteAry(_cGearSet.RRingGear));
-            _memory.writeBytes(_customizeOffset + GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.LRingGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_HEAD_OFF, GearTupleToByteAry(_cGearSet.HeadGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_BODY_OFF, GearTupleToByteAry(_cGearSet.BodyGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_HANDS_OFF, GearTupleToByteAry(_cGearSet.HandsGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_LEGS_OFF, GearTupleToByteAry(_cGearSet.LegsGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_FEET_OFF, GearTupleToByteAry(_cGearSet.FeetGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_EAR_OFF, GearTupleToByteAry(_cGearSet.EarGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_NECK_OFF, GearTupleToByteAry(_cGearSet.NeckGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.WristGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_RRING_OFF, GearTupleToByteAry(_cGearSet.RRingGear));
+            _memory.writeBytes(_customizeOffset + Definitions.GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.LRingGear));
 
-            _memory.writeBytes(_customizeOffset + WEP_MAINH_OFF, WepTupleToByteAry(_cGearSet.MainWep));
-            _memory.writeBytes(_customizeOffset + WEP_OFFH_OFF, WepTupleToByteAry(_cGearSet.OffWep));
+            _memory.writeBytes(_customizeOffset + Definitions.WEP_MAINH_OFF, WepTupleToByteAry(_cGearSet.MainWep));
+            _memory.writeBytes(_customizeOffset + Definitions.WEP_OFFH_OFF, WepTupleToByteAry(_cGearSet.OffWep));
         }
 
         private void WriteGear_Click(object sender, EventArgs e)
@@ -413,21 +396,41 @@ namespace FFXIVPlayerWardrobe
             }
         }
 
-        private void CheckItemList()
+        private bool CheckItemList()
         {
-            if(_exdProvider.Items == null)
+            if (_exdProvider.Items == null)
+            {
                 _exdProvider.MakeItemList();
+                if (_exdProvider.Items == null)
+                {
+                    MessageBox.Show("Failed to read item list. This isn't your fault.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
         }
 
-        private void CheckResidentList()
+        private bool CheckResidentList()
         {
             if (_exdProvider.Residents == null)
+            {
                 _exdProvider.MakeResidentList();
+                if (_exdProvider.Residents == null)
+                {
+                    MessageBox.Show("Failed to read NPC list. This isn't your fault.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void openItemsHeadButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
             p.ShowDialog();
 
@@ -437,7 +440,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsBodyButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
             p.ShowDialog();
 
@@ -447,7 +452,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsHandsButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
             p.ShowDialog();
 
@@ -457,7 +464,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsLegsButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
             p.ShowDialog();
 
@@ -467,7 +476,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsFeetButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
             p.ShowDialog();
 
@@ -477,7 +488,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsEarsButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
             p.ShowDialog();
 
@@ -487,7 +500,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsNeckButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
             p.ShowDialog();
 
@@ -497,7 +512,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsWristsButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
             p.ShowDialog();
 
@@ -507,7 +524,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsRRingButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             p.ShowDialog();
 
@@ -517,7 +536,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsLRingButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             p.ShowDialog();
 
@@ -527,7 +548,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsMHButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
             p.ShowDialog();
 
@@ -537,7 +560,9 @@ namespace FFXIVPlayerWardrobe
 
         private void openItemsOHButton_Click(object sender, EventArgs e)
         {
-            CheckItemList();
+            if (!CheckItemList())
+                return;
+
             ItemPicker p = new ItemPicker(_exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelOff.Contains("0,0,0,0")).ToArray());
             p.ShowDialog();
 
@@ -600,7 +625,9 @@ namespace FFXIVPlayerWardrobe
 
         private void button11_Click(object sender, EventArgs e)
         {
-            CheckResidentList();
+            if (!CheckResidentList())
+                return;
+
             ResidentSelectForm f = new ResidentSelectForm(_exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
             f.ShowDialog();
 
@@ -624,7 +651,7 @@ namespace FFXIVPlayerWardrobe
         private void offsetLabel_Click(object sender, EventArgs e)
         {
 #if DEBUG
-            var mem = _memory.readBytes((_customizeOffset + CHARA_NAME_OFF).ToString("X"), 2000);
+            var mem = _memory.readBytes((_customizeOffset + Definitions.CHARA_NAME_OFF).ToString("X"), 2000);
             File.WriteAllBytes("dump.bin", mem);
             MessageBox.Show("Dumped memory to dump.bin");
 #endif
