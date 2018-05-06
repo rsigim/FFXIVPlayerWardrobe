@@ -176,7 +176,7 @@ namespace FFXIVPlayerWardrobe
                     Debug.WriteLine($"ExdCsvReader: {rowCount} items read");
                 }
             }
-            catch (IOException exc)
+            catch (Exception exc)
             {
                 Items = null;
 #if DEBUG
@@ -385,7 +385,7 @@ namespace FFXIVPlayerWardrobe
                 }
 
             }
-            catch (IOException exc)
+            catch (Exception exc)
             {
                 Residents = null;
 #if DEBUG
