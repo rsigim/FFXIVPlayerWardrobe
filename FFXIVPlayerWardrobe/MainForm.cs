@@ -638,7 +638,7 @@ namespace FFXIVPlayerWardrobe
 
             if (noNpcCustomizeToolStripMenuItem.Checked)
             {
-                gs.Customize = _cGearSet.Customize;
+                gs.Customize = _cGearSet.Customize ?? _gearSet.Customize; // Use modified customize if available
             }
 
             _cGearSet = gs;

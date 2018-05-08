@@ -166,7 +166,9 @@
             // 
             // noNpcCustomizeToolStripMenuItem
             // 
+            this.noNpcCustomizeToolStripMenuItem.Checked = true;
             this.noNpcCustomizeToolStripMenuItem.CheckOnClick = true;
+            this.noNpcCustomizeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noNpcCustomizeToolStripMenuItem.Name = "noNpcCustomizeToolStripMenuItem";
             this.noNpcCustomizeToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.noNpcCustomizeToolStripMenuItem.Text = "Don\'t apply customize for selected NPCs";
@@ -632,7 +634,7 @@
             this.customizeChooserButton.UseVisualStyleBackColor = true;
             this.customizeChooserButton.Click += new System.EventHandler(this.customizeChooserButton_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -648,7 +650,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FFXIVPlayerWardrobe ";
