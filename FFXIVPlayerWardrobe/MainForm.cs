@@ -118,6 +118,16 @@ namespace FFXIVPlayerWardrobe
 
                 _worker.DoWork += WorkerOnDoWork;
                 _worker.WorkerSupportsCancellation = true;
+
+#if !DEBUG
+                VersionCheck v = new VersionCheck();
+                v.GotVersionInfo += delegate(object o, VersionCheck.VersionCheckEventArgs args)
+                {
+                    if(!args.Current)
+                        MessageBox.Show($"Your version is not up-to-date(newest: {args.NewVersion}).\nMake sure to get it for bug fixes and new features.", "Version Check " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                };
+                v.Run();
+#endif
             }
             catch (Exception exc)
             {
@@ -655,6 +665,11 @@ namespace FFXIVPlayerWardrobe
             File.WriteAllBytes("dump.bin", mem);
             MessageBox.Show("Dumped memory to dump.bin");
 #endif
+        }
+
+        private void openGuideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/goaaats/FFXIVPlayerWardrobe/wiki/Usage-Guide");
         }
     }
 }

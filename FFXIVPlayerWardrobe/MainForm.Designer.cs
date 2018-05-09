@@ -85,6 +85,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.customizeChooserButton = new System.Windows.Forms.Button();
+            this.openGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -199,7 +200,8 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.openGuideToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -207,7 +209,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -634,6 +636,13 @@
             this.customizeChooserButton.UseVisualStyleBackColor = true;
             this.customizeChooserButton.Click += new System.EventHandler(this.customizeChooserButton_Click);
             // 
+            // openGuideToolStripMenuItem
+            // 
+            this.openGuideToolStripMenuItem.Name = "openGuideToolStripMenuItem";
+            this.openGuideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openGuideToolStripMenuItem.Text = "Open Guide";
+            this.openGuideToolStripMenuItem.Click += new System.EventHandler(this.openGuideToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,6 +733,7 @@
         private System.Windows.Forms.TextBox offWepTextBox;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ToolStripMenuItem openGuideToolStripMenuItem;
     }
 }
 

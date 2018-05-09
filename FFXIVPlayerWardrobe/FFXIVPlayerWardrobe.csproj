@@ -102,6 +102,7 @@
       <DependentUpon>ScanProgressForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="VersionCheck.cs" />
     <EmbeddedResource Include="Forms\CharaSaveChooseForm.resx">
       <DependentUpon>CharaSaveChooseForm.cs</DependentUpon>
     </EmbeddedResource>
