@@ -69,6 +69,11 @@ namespace FFXIVPlayerWardrobe
 
                 _gearSet.Customize = chooser.Choice;
 
+                var searchCA = Util.ByteArrayToString(chooser.Choice).ToCharArray();
+                searchCA[36] = '?';
+                searchCA[37] = '?';
+                var searchString = new string(searchCA);
+
                 Process ffxivProcess = null;
 
                 try
@@ -106,7 +111,7 @@ namespace FFXIVPlayerWardrobe
 #endif
                 }
 
-                var scanForm = new ScanProgressForm(_memory, Util.ByteArrayToString(chooser.Choice));
+                var scanForm = new ScanProgressForm(_memory, searchString);
                 scanForm.Show();
                 scanForm.Worker.RunWorkerCompleted += ScanWorker_RunWorkerCompleted;
                 scanForm.Run();
