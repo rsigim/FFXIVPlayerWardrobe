@@ -132,8 +132,11 @@ namespace FFXIVPlayerWardrobe
                 VersionCheck v = new VersionCheck();
                 v.GotVersionInfo += delegate(object o, VersionCheck.VersionCheckEventArgs args)
                 {
-                    if(!args.Current)
+                    if (!args.Current)
+                    {
                         MessageBox.Show($"Your version is not up-to-date(newest: {args.NewVersion}).\nMake sure to get it for bug fixes and new features.", "Version Check " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Diagnostics.Process.Start("https://github.com/goaaats/FFXIVPlayerWardrobe/releases/latest");
+                    }
                 };
                 v.Run();
 #endif
