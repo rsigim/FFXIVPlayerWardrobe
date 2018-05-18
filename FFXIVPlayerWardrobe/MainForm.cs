@@ -688,14 +688,21 @@ namespace FFXIVPlayerWardrobe
 
         private void openCustomizeEditForm_Click(object sender, EventArgs e)
         {
-            var c = new EditCustomizeForm(Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty)), _exdProvider);
-            c.ShowDialog();
+            try
+            {
+                var c = new EditCustomizeForm(Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty)), _exdProvider);
+                c.ShowDialog();
 
-            if (c.EditedCustomize == null)
-                return;
+                if (c.EditedCustomize == null)
+                    return;
 
-            customizeTextBox.Text = Util.ByteArrayToString(c.EditedCustomize);
-            customizeApplyButton_Click(null, null);
+                customizeTextBox.Text = Util.ByteArrayToString(c.EditedCustomize);
+                customizeApplyButton_Click(null, null);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

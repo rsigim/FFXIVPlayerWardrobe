@@ -153,7 +153,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 188);
+            this.label5.Location = new System.Drawing.Point(9, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 11;
@@ -161,7 +161,7 @@
             // 
             // bustSizeUpDown
             // 
-            this.bustSizeUpDown.Location = new System.Drawing.Point(12, 204);
+            this.bustSizeUpDown.Location = new System.Drawing.Point(12, 206);
             this.bustSizeUpDown.Name = "bustSizeUpDown";
             this.bustSizeUpDown.Size = new System.Drawing.Size(120, 20);
             this.bustSizeUpDown.TabIndex = 10;
@@ -169,7 +169,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 231);
+            this.label6.Location = new System.Drawing.Point(10, 233);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 13;
@@ -177,7 +177,7 @@
             // 
             // raceFeatureSizeUpDown
             // 
-            this.raceFeatureSizeUpDown.Location = new System.Drawing.Point(13, 247);
+            this.raceFeatureSizeUpDown.Location = new System.Drawing.Point(13, 249);
             this.raceFeatureSizeUpDown.Name = "raceFeatureSizeUpDown";
             this.raceFeatureSizeUpDown.Size = new System.Drawing.Size(120, 20);
             this.raceFeatureSizeUpDown.TabIndex = 12;
@@ -206,7 +206,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(156, 231);
+            this.label8.Location = new System.Drawing.Point(156, 233);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 17;
@@ -214,7 +214,7 @@
             // 
             // raceFeatureTypeUpDown
             // 
-            this.raceFeatureTypeUpDown.Location = new System.Drawing.Point(159, 247);
+            this.raceFeatureTypeUpDown.Location = new System.Drawing.Point(159, 249);
             this.raceFeatureTypeUpDown.Name = "raceFeatureTypeUpDown";
             this.raceFeatureTypeUpDown.Size = new System.Drawing.Size(120, 20);
             this.raceFeatureTypeUpDown.TabIndex = 16;
