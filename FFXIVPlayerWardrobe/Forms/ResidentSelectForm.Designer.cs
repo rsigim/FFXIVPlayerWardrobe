@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResidentSelectForm));
             this.residentGridView = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyCustomizeToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.okButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchNextButton = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyCustomizeToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.residentGridView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,20 @@
             this.residentGridView.ReadOnly = true;
             this.residentGridView.Size = new System.Drawing.Size(924, 332);
             this.residentGridView.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyCustomizeToClipboardToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 26);
+            // 
+            // copyCustomizeToClipboardToolStripMenuItem
+            // 
+            this.copyCustomizeToClipboardToolStripMenuItem.Name = "copyCustomizeToClipboardToolStripMenuItem";
+            this.copyCustomizeToClipboardToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.copyCustomizeToClipboardToolStripMenuItem.Text = "Copy customize to clipboard";
+            this.copyCustomizeToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyCustomizeToClipboardToolStripMenuItem_Click);
             // 
             // okButton
             // 
@@ -81,20 +96,6 @@
             this.searchNextButton.UseVisualStyleBackColor = true;
             this.searchNextButton.Click += new System.EventHandler(this.searchNextButton_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyCustomizeToClipboardToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 48);
-            // 
-            // copyCustomizeToClipboardToolStripMenuItem
-            // 
-            this.copyCustomizeToClipboardToolStripMenuItem.Name = "copyCustomizeToClipboardToolStripMenuItem";
-            this.copyCustomizeToClipboardToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
-            this.copyCustomizeToClipboardToolStripMenuItem.Text = "Copy customize to clipboard";
-            this.copyCustomizeToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyCustomizeToClipboardToolStripMenuItem_Click);
-            // 
             // ResidentSelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,10 +106,10 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.residentGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ResidentSelectForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Resident";
             ((System.ComponentModel.ISupportInitialize)(this.residentGridView)).EndInit();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScanProgressForm));
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             this.label1.Size = new System.Drawing.Size(210, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Searching for character data, please wait...";
+            this.label1.UseWaitCursor = true;
             // 
             // ScanProgressForm
             // 
@@ -47,6 +49,7 @@
             this.ClientSize = new System.Drawing.Size(441, 109);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ScanProgressForm";
