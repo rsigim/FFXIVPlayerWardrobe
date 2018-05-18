@@ -69,6 +69,12 @@
       <DependentUpon>CharaSaveChooseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExdCsvReader.cs" />
+    <Compile Include="Forms\EditCustomizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCustomizeForm.Designer.cs">
+      <DependentUpon>EditCustomizeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Memory\Definitions.cs" />
     <Compile Include="Memory\FindCustomizeOffset.cs" />
     <Compile Include="MainForm.cs">
@@ -86,6 +92,7 @@
     </Compile>
     <Compile Include="MakeSaveDatList.cs" />
     <Compile Include="Memory\Mem.cs" />
+    <Compile Include="NameWrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\ResidentSelectForm.cs">
@@ -105,6 +112,9 @@
     <Compile Include="VersionCheck.cs" />
     <EmbeddedResource Include="Forms\CharaSaveChooseForm.resx">
       <DependentUpon>CharaSaveChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCustomizeForm.resx">
+      <DependentUpon>EditCustomizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

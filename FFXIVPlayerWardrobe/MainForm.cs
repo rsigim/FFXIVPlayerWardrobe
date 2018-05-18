@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FFXIVPlayerWardrobe.Forms;
 using FFXIVPlayerWardrobe.Memory;
 using FFXIVPlayerWardrobe.Properties;
 using Newtonsoft.Json;
@@ -46,6 +47,9 @@ namespace FFXIVPlayerWardrobe
 #endif
 
                 this.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
+#if DEBUG
+                this.Text += " - DEBUG";
+#endif
 
                 if (Properties.Settings.Default.FirstLaunch)
                 {
@@ -291,8 +295,8 @@ namespace FFXIVPlayerWardrobe
 
         private void restoreOriginalLookButton_Click(object sender, EventArgs e)
         {
-            _memory.writeBytes(_customizeOffset, _gearSet.Customize);
             RestoreDefaultGear();
+            RestoreDefaultCustomize();
             FillDefaults();
         }
 
@@ -321,6 +325,11 @@ namespace FFXIVPlayerWardrobe
         {
             MessageBox.Show(
                 $"FFXIVPlayerWardrobe - amibu/goaaats\n\nUsing Memory.dll by erfg(https://github.com/erfg12/memory.dll)\n\nItem table: {Resources.item_exh_en.Split('\n').Length - 1} entries\nResident info table: {Resources.enpcresident_exh_en.Split('\n').Length - 1} entries\nResident base table: {Resources.enpcbase_exh.Split('\n').Length - 1} entries");
+        }
+
+        private void RestoreDefaultCustomize()
+        {
+            _memory.writeBytes(_customizeOffset, _gearSet.Customize);
         }
 
         private void RestoreDefaultGear()
@@ -638,7 +647,7 @@ namespace FFXIVPlayerWardrobe
             }
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void selectNpcButton_Click(object sender, EventArgs e)
         {
             if (!CheckResidentList())
                 return;
@@ -651,10 +660,7 @@ namespace FFXIVPlayerWardrobe
 
             var gs = f.Choice.Gear;
 
-            if (noNpcCustomizeToolStripMenuItem.Checked)
-            {
-                gs.Customize = _cGearSet.Customize ?? _gearSet.Customize; // Use modified customize if available
-            }
+            gs.Customize = _cGearSet.Customize ?? _gearSet.Customize;
 
             _cGearSet = gs;
 
@@ -675,6 +681,18 @@ namespace FFXIVPlayerWardrobe
         private void openGuideToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/goaaats/FFXIVPlayerWardrobe/wiki/Usage-Guide");
+        }
+
+        private void openCustomizeEditForm_Click(object sender, EventArgs e)
+        {
+            var c = new EditCustomizeForm(Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty)), _exdProvider);
+            c.ShowDialog();
+
+            if (c.EditedCustomize == null)
+                return;
+
+            customizeTextBox.Text = Util.ByteArrayToString(c.EditedCustomize);
+            customizeApplyButton_Click(null, null);
         }
     }
 }

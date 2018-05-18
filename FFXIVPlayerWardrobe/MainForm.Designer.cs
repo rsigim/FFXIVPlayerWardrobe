@@ -28,27 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.restoreOriginalLookButton = new System.Windows.Forms.Button();
             this.offsetLabel = new System.Windows.Forms.Label();
-            this.customizeTextBox = new System.Windows.Forms.TextBox();
-            this.customizeApplyButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeNewDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.freezeValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noNpcCustomizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gearSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bodyGearTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.offWepTextBox = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.selectNpcButton = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -83,18 +82,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.openCustomizeEditForm = new System.Windows.Forms.Button();
+            this.customizeTextBox = new System.Windows.Forms.TextBox();
+            this.customizeApplyButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.customizeChooserButton = new System.Windows.Forms.Button();
-            this.openGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // restoreOriginalLookButton
             // 
-            this.restoreOriginalLookButton.Location = new System.Drawing.Point(12, 372);
+            this.restoreOriginalLookButton.Location = new System.Drawing.Point(11, 394);
             this.restoreOriginalLookButton.Name = "restoreOriginalLookButton";
-            this.restoreOriginalLookButton.Size = new System.Drawing.Size(479, 23);
+            this.restoreOriginalLookButton.Size = new System.Drawing.Size(480, 23);
             this.restoreOriginalLookButton.TabIndex = 0;
             this.restoreOriginalLookButton.Text = "Restore Original";
             this.restoreOriginalLookButton.UseVisualStyleBackColor = true;
@@ -104,29 +104,12 @@
             // 
             this.offsetLabel.AutoSize = true;
             this.offsetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F);
-            this.offsetLabel.Location = new System.Drawing.Point(15, 397);
+            this.offsetLabel.Location = new System.Drawing.Point(15, 416);
             this.offsetLabel.Name = "offsetLabel";
             this.offsetLabel.Size = new System.Drawing.Size(92, 13);
             this.offsetLabel.TabIndex = 1;
             this.offsetLabel.Text = "CustomizeOffset: -";
             this.offsetLabel.Click += new System.EventHandler(this.offsetLabel_Click);
-            // 
-            // customizeTextBox
-            // 
-            this.customizeTextBox.Location = new System.Drawing.Point(12, 40);
-            this.customizeTextBox.Name = "customizeTextBox";
-            this.customizeTextBox.Size = new System.Drawing.Size(361, 20);
-            this.customizeTextBox.TabIndex = 2;
-            // 
-            // customizeApplyButton
-            // 
-            this.customizeApplyButton.Location = new System.Drawing.Point(416, 38);
-            this.customizeApplyButton.Name = "customizeApplyButton";
-            this.customizeApplyButton.Size = new System.Drawing.Size(75, 23);
-            this.customizeApplyButton.TabIndex = 3;
-            this.customizeApplyButton.Text = "Apply";
-            this.customizeApplyButton.UseVisualStyleBackColor = true;
-            this.customizeApplyButton.Click += new System.EventHandler(this.customizeApplyButton_Click);
             // 
             // menuStrip1
             // 
@@ -144,8 +127,7 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.makeNewDefaultToolStripMenuItem,
-            this.freezeValuesToolStripMenuItem,
-            this.noNpcCustomizeToolStripMenuItem});
+            this.freezeValuesToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -153,7 +135,7 @@
             // makeNewDefaultToolStripMenuItem
             // 
             this.makeNewDefaultToolStripMenuItem.Name = "makeNewDefaultToolStripMenuItem";
-            this.makeNewDefaultToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.makeNewDefaultToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.makeNewDefaultToolStripMenuItem.Text = "Reload all values";
             this.makeNewDefaultToolStripMenuItem.Click += new System.EventHandler(this.makeNewDefaultToolStripMenuItem_Click);
             // 
@@ -161,18 +143,9 @@
             // 
             this.freezeValuesToolStripMenuItem.CheckOnClick = true;
             this.freezeValuesToolStripMenuItem.Name = "freezeValuesToolStripMenuItem";
-            this.freezeValuesToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.freezeValuesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.freezeValuesToolStripMenuItem.Text = "Freeze values(persist after zoning)";
             this.freezeValuesToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.freezeValuesToolStripMenuItem_CheckStateChanged);
-            // 
-            // noNpcCustomizeToolStripMenuItem
-            // 
-            this.noNpcCustomizeToolStripMenuItem.Checked = true;
-            this.noNpcCustomizeToolStripMenuItem.CheckOnClick = true;
-            this.noNpcCustomizeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.noNpcCustomizeToolStripMenuItem.Name = "noNpcCustomizeToolStripMenuItem";
-            this.noNpcCustomizeToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
-            this.noNpcCustomizeToolStripMenuItem.Text = "Don\'t apply customize for selected NPCs";
             // 
             // gearSetToolStripMenuItem
             // 
@@ -213,6 +186,13 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // openGuideToolStripMenuItem
+            // 
+            this.openGuideToolStripMenuItem.Name = "openGuideToolStripMenuItem";
+            this.openGuideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openGuideToolStripMenuItem.Text = "Open Guide";
+            this.openGuideToolStripMenuItem.Click += new System.EventHandler(this.openGuideToolStripMenuItem_Click);
+            // 
             // bodyGearTextBox
             // 
             this.bodyGearTextBox.Location = new System.Drawing.Point(9, 74);
@@ -222,11 +202,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.button13);
             this.groupBox1.Controls.Add(this.button12);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.offWepTextBox);
-            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.selectNpcButton);
             this.groupBox1.Controls.Add(this.button10);
             this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.button8);
@@ -262,7 +243,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.bodyGearTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 67);
+            this.groupBox1.Location = new System.Drawing.Point(12, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(479, 299);
             this.groupBox1.TabIndex = 6;
@@ -305,15 +286,15 @@
             this.offWepTextBox.Size = new System.Drawing.Size(92, 20);
             this.offWepTextBox.TabIndex = 47;
             // 
-            // button11
+            // selectNpcButton
             // 
-            this.button11.Location = new System.Drawing.Point(198, 120);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 46;
-            this.button11.Text = "Select NPC";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.selectNpcButton.Location = new System.Drawing.Point(198, 120);
+            this.selectNpcButton.Name = "selectNpcButton";
+            this.selectNpcButton.Size = new System.Drawing.Size(75, 23);
+            this.selectNpcButton.TabIndex = 46;
+            this.selectNpcButton.Text = "Select NPC";
+            this.selectNpcButton.UseVisualStyleBackColor = true;
+            this.selectNpcButton.Click += new System.EventHandler(this.selectNpcButton_Click);
             // 
             // button10
             // 
@@ -592,7 +573,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(6, 280);
+            this.label3.Location = new System.Drawing.Point(9, 280);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 10;
@@ -617,50 +598,60 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.WriteGear_Click);
             // 
+            // openCustomizeEditForm
+            // 
+            this.openCustomizeEditForm.Location = new System.Drawing.Point(11, 59);
+            this.openCustomizeEditForm.Name = "openCustomizeEditForm";
+            this.openCustomizeEditForm.Size = new System.Drawing.Size(480, 23);
+            this.openCustomizeEditForm.TabIndex = 7;
+            this.openCustomizeEditForm.Text = "Open body editor";
+            this.openCustomizeEditForm.UseVisualStyleBackColor = true;
+            this.openCustomizeEditForm.Click += new System.EventHandler(this.openCustomizeEditForm_Click);
+            // 
+            // customizeTextBox
+            // 
+            this.customizeTextBox.Location = new System.Drawing.Point(12, 33);
+            this.customizeTextBox.Name = "customizeTextBox";
+            this.customizeTextBox.Size = new System.Drawing.Size(418, 20);
+            this.customizeTextBox.TabIndex = 8;
+            // 
+            // customizeApplyButton
+            // 
+            this.customizeApplyButton.Location = new System.Drawing.Point(436, 31);
+            this.customizeApplyButton.Name = "customizeApplyButton";
+            this.customizeApplyButton.Size = new System.Drawing.Size(55, 23);
+            this.customizeApplyButton.TabIndex = 9;
+            this.customizeApplyButton.Text = "Apply";
+            this.customizeApplyButton.UseVisualStyleBackColor = true;
+            this.customizeApplyButton.Click += new System.EventHandler(this.customizeApplyButton_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 24);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(6, 267);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Customize";
-            // 
-            // customizeChooserButton
-            // 
-            this.customizeChooserButton.Location = new System.Drawing.Point(379, 38);
-            this.customizeChooserButton.Name = "customizeChooserButton";
-            this.customizeChooserButton.Size = new System.Drawing.Size(31, 23);
-            this.customizeChooserButton.TabIndex = 37;
-            this.customizeChooserButton.Text = "...";
-            this.customizeChooserButton.UseVisualStyleBackColor = true;
-            this.customizeChooserButton.Click += new System.EventHandler(this.customizeChooserButton_Click);
-            // 
-            // openGuideToolStripMenuItem
-            // 
-            this.openGuideToolStripMenuItem.Name = "openGuideToolStripMenuItem";
-            this.openGuideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openGuideToolStripMenuItem.Text = "Open Guide";
-            this.openGuideToolStripMenuItem.Click += new System.EventHandler(this.openGuideToolStripMenuItem_Click);
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "\"...\" to choose from list";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 411);
-            this.Controls.Add(this.customizeChooserButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(503, 427);
             this.Controls.Add(this.customizeApplyButton);
             this.Controls.Add(this.customizeTextBox);
+            this.Controls.Add(this.openCustomizeEditForm);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.offsetLabel);
             this.Controls.Add(this.restoreOriginalLookButton);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FFXIVPlayerWardrobe ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -678,8 +669,6 @@
 
         private System.Windows.Forms.Button restoreOriginalLookButton;
         private System.Windows.Forms.Label offsetLabel;
-        private System.Windows.Forms.TextBox customizeTextBox;
-        private System.Windows.Forms.Button customizeApplyButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -688,7 +677,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox lRingGearTextBox;
         private System.Windows.Forms.Label label11;
@@ -714,7 +702,6 @@
         private System.Windows.Forms.TextBox mainWepTextBox;
         private System.Windows.Forms.CheckBox freezeGearCheckBox;
         private System.Windows.Forms.Button openItemsHeadButton;
-        private System.Windows.Forms.Button customizeChooserButton;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
@@ -727,13 +714,16 @@
         private System.Windows.Forms.ToolStripMenuItem gearSetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ToolStripMenuItem noNpcCustomizeToolStripMenuItem;
+        private System.Windows.Forms.Button selectNpcButton;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox offWepTextBox;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.ToolStripMenuItem openGuideToolStripMenuItem;
+        private System.Windows.Forms.Button openCustomizeEditForm;
+        private System.Windows.Forms.TextBox customizeTextBox;
+        private System.Windows.Forms.Button customizeApplyButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 
