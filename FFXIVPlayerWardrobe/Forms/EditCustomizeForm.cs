@@ -151,5 +151,17 @@ namespace FFXIVPlayerWardrobe.Forms
 
             FillDefaults();
         }
+
+        private void selectSavedCharButton_Click(object sender, EventArgs e)
+        {
+            var c = new CharaSaveChooseForm("Choose a character to load.");
+            c.ShowDialog();
+
+            if (c.Choice != null)
+            {
+                _customize = c.Choice;
+                FillDefaults();
+            }
+        }
     }
 }

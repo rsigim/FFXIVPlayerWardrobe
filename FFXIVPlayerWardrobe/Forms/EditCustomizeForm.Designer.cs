@@ -48,6 +48,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.raceFeatureTypeUpDown = new System.Windows.Forms.NumericUpDown();
             this.selectNpcButton = new System.Windows.Forms.Button();
+            this.selectSavedCharButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.heightUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bustSizeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.raceFeatureSizeUpDown)).BeginInit();
@@ -221,7 +222,7 @@
             // 
             // selectNpcButton
             // 
-            this.selectNpcButton.Location = new System.Drawing.Point(172, 175);
+            this.selectNpcButton.Location = new System.Drawing.Point(159, 180);
             this.selectNpcButton.Name = "selectNpcButton";
             this.selectNpcButton.Size = new System.Drawing.Size(75, 23);
             this.selectNpcButton.TabIndex = 18;
@@ -229,11 +230,22 @@
             this.selectNpcButton.UseVisualStyleBackColor = true;
             this.selectNpcButton.Click += new System.EventHandler(this.selectNpcButton_Click);
             // 
+            // selectSavedCharButton
+            // 
+            this.selectSavedCharButton.Location = new System.Drawing.Point(240, 180);
+            this.selectSavedCharButton.Name = "selectSavedCharButton";
+            this.selectSavedCharButton.Size = new System.Drawing.Size(136, 23);
+            this.selectSavedCharButton.TabIndex = 19;
+            this.selectSavedCharButton.Text = "Select Saved Character";
+            this.selectSavedCharButton.UseVisualStyleBackColor = true;
+            this.selectSavedCharButton.Click += new System.EventHandler(this.selectSavedCharButton_Click);
+            // 
             // EditCustomizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 286);
+            this.Controls.Add(this.selectSavedCharButton);
             this.Controls.Add(this.selectNpcButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.raceFeatureTypeUpDown);
@@ -290,5 +302,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown raceFeatureTypeUpDown;
         private System.Windows.Forms.Button selectNpcButton;
+        private System.Windows.Forms.Button selectSavedCharButton;
     }
 }

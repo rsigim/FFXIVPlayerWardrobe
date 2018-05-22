@@ -379,7 +379,15 @@ namespace FFXIVPlayerWardrobe
 
                         gear.Customize = customize.ToArray();
 
-                        Residents[id].Gear = gear;
+                        try
+                        {
+                            Residents[id].Gear = gear;
+                        }
+                        catch (KeyNotFoundException exc)
+                        {
+                            Console.WriteLine("Did not find corresponding entry for: " + id);
+                        }
+                        
                     }
                     Console.WriteLine($"{rowCount} idLookMappings read");
                 }
