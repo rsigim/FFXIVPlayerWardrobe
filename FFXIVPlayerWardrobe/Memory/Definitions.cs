@@ -20,7 +20,7 @@ namespace FFXIVPlayerWardrobe.Memory
         public const int GEAR_LRING_OFF = -0x5C;
 
         public const int WEP_MAINH_OFF = -0x310; //0x2f0
-        public const int WEP_OFFH_OFF = -0x318;
+        public const int WEP_OFFH_OFF = -0x316;
 
         public const int CHARA_NAME_OFF = -0x1600;
         public const int CHARA_RUN_COUNTER_OFF = -0x7B8;

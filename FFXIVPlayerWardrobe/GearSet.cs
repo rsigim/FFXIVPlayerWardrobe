@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using GearTuple = System.Tuple<int, int, int>;
-using WepTuple = System.Tuple<int, int, int, int>;
 
 namespace FFXIVPlayerWardrobe
 {
@@ -22,8 +21,8 @@ namespace FFXIVPlayerWardrobe
         public GearTuple RRingGear { get; set; }
         public GearTuple LRingGear { get; set; }
 
-        public WepTuple MainWep { get; set; }
-        public WepTuple OffWep { get; set; }
+        public GearTuple MainWep { get; set; }
+        public GearTuple OffWep { get; set; }
 
         public byte[] Customize { get; set; }
 

@@ -5,7 +5,6 @@ using System.IO;
 using FFXIVPlayerWardrobe.Properties;
 using Microsoft.VisualBasic.FileIO;
 using GearTuple = System.Tuple<int, int, int>;
-using WepTuple = System.Tuple<int, int, int, int>;
 
 namespace FFXIVPlayerWardrobe
 {
@@ -277,12 +276,12 @@ namespace FFXIVPlayerWardrobe
 
                             if (fCount == 67)
                             {
-                                gear.MainWep = MainForm.CommaToWepTuple(field);
+                                gear.MainWep = MainForm.CommaToGearTuple(field);
                             }
 
                             if (fCount == 69)
                             {
-                                gear.OffWep = MainForm.CommaToWepTuple(field);
+                                gear.OffWep = MainForm.CommaToGearTuple(field);
                             }
 
                             if (fCount >= 71 && fCount <= 90)

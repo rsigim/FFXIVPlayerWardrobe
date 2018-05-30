@@ -17,7 +17,6 @@ using FFXIVPlayerWardrobe.Memory;
 using FFXIVPlayerWardrobe.Properties;
 using Newtonsoft.Json;
 using GearTuple = System.Tuple<int, int, int>;
-using WepTuple = System.Tuple<int, int, int, int>;
 
 namespace FFXIVPlayerWardrobe
 {
@@ -195,8 +194,8 @@ namespace FFXIVPlayerWardrobe
             _gearSet.RRingGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_RRING_OFF);
             _gearSet.LRingGear = ReadGearTuple(_customizeOffset + Definitions.GEAR_LRING_OFF);
 
-            _gearSet.MainWep = ReadWepTuple(_customizeOffset + Definitions.WEP_MAINH_OFF);
-            _gearSet.OffWep = ReadWepTuple(_customizeOffset + Definitions.WEP_OFFH_OFF);
+            _gearSet.MainWep = ReadGearTuple(_customizeOffset + Definitions.WEP_MAINH_OFF);
+            _gearSet.OffWep = ReadGearTuple(_customizeOffset + Definitions.WEP_OFFH_OFF);
         }
 
         private void FillDefaults()
@@ -214,8 +213,8 @@ namespace FFXIVPlayerWardrobe
             rRingGearTextBox.Text = GearTupleToComma(_gearSet.RRingGear);
             lRingGearTextBox.Text = GearTupleToComma(_gearSet.LRingGear);
 
-            mainWepTextBox.Text = WepTupleToComma(_gearSet.MainWep);
-            offWepTextBox.Text = WepTupleToComma(_gearSet.OffWep);
+            mainWepTextBox.Text = GearTupleToComma(_gearSet.MainWep);
+            offWepTextBox.Text = GearTupleToComma(_gearSet.OffWep);
         }
 
         private void FillCustoms()
@@ -233,38 +232,8 @@ namespace FFXIVPlayerWardrobe
             rRingGearTextBox.Text = GearTupleToComma(_cGearSet.RRingGear);
             lRingGearTextBox.Text = GearTupleToComma(_cGearSet.LRingGear);
 
-            mainWepTextBox.Text = WepTupleToComma(_cGearSet.MainWep);
-            offWepTextBox.Text = WepTupleToComma(_cGearSet.OffWep);
-        }
-
-        private WepTuple ReadWepTuple(IntPtr offset)
-        {
-            var bytes = _memory.readBytes(offset.ToString("X"), 8);
-
-            return new WepTuple(BitConverter.ToInt16(bytes, 0), BitConverter.ToInt16(bytes, 2), BitConverter.ToInt16(bytes, 4), BitConverter.ToInt16(bytes, 6));
-        }
-
-        public static string WepTupleToComma(WepTuple tuple)
-        {
-            return $"{tuple.Item1},{tuple.Item2},{tuple.Item3},{tuple.Item4}";
-        }
-
-        public static WepTuple CommaToWepTuple(string input)
-        {
-            var parts = input.Split(',');
-            return new WepTuple(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]), int.Parse(parts[3]));
-        }
-
-        public static byte[] WepTupleToByteAry(WepTuple tuple)
-        {
-            byte[] bytes = new byte[8];
-
-            BitConverter.GetBytes((Int16)tuple.Item1).CopyTo(bytes, 0);
-            BitConverter.GetBytes((Int16)tuple.Item2).CopyTo(bytes, 2);
-            BitConverter.GetBytes((Int16)tuple.Item3).CopyTo(bytes, 4);
-            BitConverter.GetBytes((Int16)tuple.Item4).CopyTo(bytes, 6);
-
-            return bytes;
+            mainWepTextBox.Text = GearTupleToComma(_cGearSet.MainWep);
+            offWepTextBox.Text = GearTupleToComma(_cGearSet.OffWep);
         }
 
         private GearTuple ReadGearTuple(IntPtr offset)
@@ -292,6 +261,17 @@ namespace FFXIVPlayerWardrobe
             BitConverter.GetBytes((Int16)tuple.Item1).CopyTo(bytes, 0);
             bytes[2] = (byte)tuple.Item2;
             bytes[3] = (byte)tuple.Item3;
+
+            return bytes;
+        }
+
+        public static byte[] WepTupleToByteAry(GearTuple tuple)
+        {
+            byte[] bytes = new byte[6];
+
+            BitConverter.GetBytes((Int16)tuple.Item1).CopyTo(bytes, 0);
+            BitConverter.GetBytes((Int16)tuple.Item2).CopyTo(bytes, 2);
+            BitConverter.GetBytes((Int16)tuple.Item3).CopyTo(bytes, 4);
 
             return bytes;
         }
@@ -387,8 +367,8 @@ namespace FFXIVPlayerWardrobe
                 _cGearSet.RRingGear = CommaToGearTuple(rRingGearTextBox.Text);
                 _cGearSet.LRingGear = CommaToGearTuple(lRingGearTextBox.Text);
 
-                _cGearSet.MainWep = CommaToWepTuple(mainWepTextBox.Text);
-                _cGearSet.OffWep = CommaToWepTuple(offWepTextBox.Text);
+                _cGearSet.MainWep = CommaToGearTuple(mainWepTextBox.Text);
+                _cGearSet.OffWep = CommaToGearTuple(offWepTextBox.Text);
 
                 WriteCurrentGearTuples();
             }
@@ -642,7 +622,7 @@ namespace FFXIVPlayerWardrobe
 
                 // Backwards compatibility
                 if(_cGearSet.OffWep == null)
-                    _cGearSet.OffWep = new WepTuple(0,0,0,0);
+                    _cGearSet.OffWep = new GearTuple(0,0,0);
 
                 FillCustoms();
                 WriteCurrentGearTuples();
@@ -683,7 +663,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openGuideToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/goaaats/FFXIVPlayerWardrobe/wiki/Usage-Guide");
+            AskGuide();
         }
 
         private void openCustomizeEditForm_Click(object sender, EventArgs e)
@@ -703,6 +683,15 @@ namespace FFXIVPlayerWardrobe
             {
                 MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public static void AskGuide()
+        {
+            var res = MessageBox.Show("Open the Usage Guide in your web browser?",
+                "FFXIVPlayerWardrobe", MessageBoxButtons.YesNo);
+
+            if (res == DialogResult.Yes)
+                System.Diagnostics.Process.Start("https://github.com/goaaats/FFXIVPlayerWardrobe/wiki/Usage-Guide");
         }
     }
 }

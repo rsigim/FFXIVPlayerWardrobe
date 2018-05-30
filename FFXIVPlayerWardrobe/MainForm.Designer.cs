@@ -43,6 +43,7 @@
             this.openGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bodyGearTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -85,7 +86,7 @@
             this.openCustomizeEditForm = new System.Windows.Forms.Button();
             this.customizeTextBox = new System.Windows.Forms.TextBox();
             this.customizeApplyButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -182,14 +183,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openGuideToolStripMenuItem
             // 
             this.openGuideToolStripMenuItem.Name = "openGuideToolStripMenuItem";
-            this.openGuideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openGuideToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.openGuideToolStripMenuItem.Text = "Open Guide";
             this.openGuideToolStripMenuItem.Click += new System.EventHandler(this.openGuideToolStripMenuItem_Click);
             // 
@@ -202,6 +203,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.button13);
             this.groupBox1.Controls.Add(this.button12);
@@ -249,6 +251,16 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gear";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(6, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "\"...\" to choose from list";
             // 
             // button13
             // 
@@ -625,15 +637,15 @@
             this.customizeApplyButton.UseVisualStyleBackColor = true;
             this.customizeApplyButton.Click += new System.EventHandler(this.customizeApplyButton_Click);
             // 
-            // label1
+            // label15
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(6, 267);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "\"...\" to choose from list";
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label15.Location = new System.Drawing.Point(6, 251);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 13);
+            this.label15.TabIndex = 52;
+            this.label15.Text = "/gpose to test";
             // 
             // MainForm
             // 
@@ -724,6 +736,7 @@
         private System.Windows.Forms.TextBox customizeTextBox;
         private System.Windows.Forms.Button customizeApplyButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label15;
     }
 }
 
