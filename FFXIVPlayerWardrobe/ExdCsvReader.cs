@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Reflection;
 using FFXIVPlayerWardrobe.Properties;
 using Microsoft.VisualBasic.FileIO;
 using GearTuple = System.Tuple<int, int, int>;
@@ -63,8 +65,16 @@ namespace FFXIVPlayerWardrobe
             }
         }
 
+        public class CharaMakeCustomizeFeature
+        {
+            public int Index { get; set; }
+            public int FeatureID { get; set; }
+            public System.Drawing.Bitmap Icon { get; set; }
+        }
+
         public Dictionary<int, Item> Items = null;
         public Dictionary<int, Resident> Residents = null;
+        public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures;
 
         public void MakeItemList()
         {
@@ -399,6 +409,121 @@ namespace FFXIVPlayerWardrobe
                 throw exc;
 #endif
             }
+        }
+
+        public void MakeCharaMakeFeatureList()
+        {
+            CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
+
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.charamakecustomize_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
+
+                        feature.Index = rowCount;
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 2)
+                            {
+                                feature.FeatureID = int.Parse(field);
+                            }
+
+                            if (fCount == 3)
+                            {
+                                feature.Icon = Properties.Resources.ResourceManager.GetObject($"_{field}_tex") as Bitmap;
+                            }
+                        }
+
+                        Console.WriteLine($"{rowCount} - {feature.FeatureID}");
+                        CharaMakeFeatures.Add(rowCount, feature);
+                    }
+
+                    Console.WriteLine($"{rowCount} charaMakeFeatures read");
+                }
+            }
+            catch (Exception exc)
+            {
+                CharaMakeFeatures = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
+
+        public CharaMakeCustomizeFeature GetCharaMakeCustomizeFeature(int index, bool getBitMap)
+        {
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.charamakecustomize_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        if (rowCount != index)
+                        {
+                            rowCount++;
+                            parser.ReadFields();
+                            continue;
+                        }
+
+                        CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
+
+                        feature.Index = index;
+
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 2)
+                            {
+                                feature.FeatureID = int.Parse(field);
+                            }
+
+                            if (fCount == 3)
+                            {
+                                if (getBitMap)
+                                {
+                                    
+                                    feature.Icon = Properties.Resources.ResourceManager.GetObject($"_{field}_tex") as Bitmap;
+                                }
+                            }
+                        }
+
+                        return feature;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+#if DEBUG
+                throw exc;
+#endif
+                return null;
+            }
+
+            return null;
         }
 
         public Item GetItemName(int id)

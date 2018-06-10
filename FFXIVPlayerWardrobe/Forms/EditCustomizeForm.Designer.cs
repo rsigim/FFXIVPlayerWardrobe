@@ -49,6 +49,7 @@
             this.raceFeatureTypeUpDown = new System.Windows.Forms.NumericUpDown();
             this.selectNpcButton = new System.Windows.Forms.Button();
             this.selectSavedCharButton = new System.Windows.Forms.Button();
+            this.selectHairStyleButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.heightUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bustSizeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.raceFeatureSizeUpDown)).BeginInit();
@@ -240,11 +241,22 @@
             this.selectSavedCharButton.UseVisualStyleBackColor = true;
             this.selectSavedCharButton.Click += new System.EventHandler(this.selectSavedCharButton_Click);
             // 
+            // selectHairStyleButton
+            // 
+            this.selectHairStyleButton.Location = new System.Drawing.Point(285, 32);
+            this.selectHairStyleButton.Name = "selectHairStyleButton";
+            this.selectHairStyleButton.Size = new System.Drawing.Size(91, 23);
+            this.selectHairStyleButton.TabIndex = 20;
+            this.selectHairStyleButton.Text = "Select Hairstyle";
+            this.selectHairStyleButton.UseVisualStyleBackColor = true;
+            this.selectHairStyleButton.Click += new System.EventHandler(this.selectHairStyleButton_Click);
+            // 
             // EditCustomizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 286);
+            this.Controls.Add(this.selectHairStyleButton);
             this.Controls.Add(this.selectSavedCharButton);
             this.Controls.Add(this.selectNpcButton);
             this.Controls.Add(this.label8);
@@ -303,5 +315,6 @@
         private System.Windows.Forms.NumericUpDown raceFeatureTypeUpDown;
         private System.Windows.Forms.Button selectNpcButton;
         private System.Windows.Forms.Button selectSavedCharButton;
+        private System.Windows.Forms.Button selectHairStyleButton;
     }
 }

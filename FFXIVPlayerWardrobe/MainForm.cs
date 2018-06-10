@@ -85,7 +85,7 @@ namespace FFXIVPlayerWardrobe
 
                     foreach (var process in procList)
                     {
-                        if (process.ProcessName == "ffxiv" || process.ProcessName == "ffxiv_dx11")
+                        if (process.ProcessName == "ffxiv_dx11")
                             ffxivProcess = process;
                     }
                 }
@@ -99,8 +99,9 @@ namespace FFXIVPlayerWardrobe
 
                 if (ffxivProcess == null)
                 {
-                    MessageBox.Show("FFXIV is not running.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("FFXIV DX11 is not running. Make sure you're using the DirectX11 version of the game.\n\nThis can be changed in the launcher by turning Config->DirectX 11 Support on.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if !DEBUG
+                    AskGuide();
                     Environment.Exit(0);
 #endif
                 }
@@ -433,6 +434,21 @@ namespace FFXIVPlayerWardrobe
             return true;
         }
 
+        private bool CheckCharaMakeFeatureList()
+        {
+            if (_exdProvider.CharaMakeFeatures == null)
+            {
+                _exdProvider.MakeCharaMakeFeatureList();
+                if (_exdProvider.CharaMakeFeatures == null)
+                {
+                    MessageBox.Show("Failed to read chara make feature list. This isn't your fault.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void openItemsHeadButton_Click(object sender, EventArgs e)
         {
             if (!CheckItemList())
@@ -668,6 +684,7 @@ namespace FFXIVPlayerWardrobe
 
         private void openCustomizeEditForm_Click(object sender, EventArgs e)
         {
+            CheckCharaMakeFeatureList();
             try
             {
                 var c = new EditCustomizeForm(Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty)), _exdProvider);

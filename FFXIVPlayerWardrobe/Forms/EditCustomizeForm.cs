@@ -163,5 +163,16 @@ namespace FFXIVPlayerWardrobe.Forms
                 FillDefaults();
             }
         }
+
+        private void selectHairStyleButton_Click(object sender, EventArgs e)
+        {
+            var c = new CharaMakeFeatureSelector((raceComboBox.SelectedIndex + 1) * 2 - 1 + tribeComboBox.SelectedIndex, genderComboBox.SelectedIndex, _exdProvider);
+            c.ShowDialog();
+
+            if (c.Choice != null)
+            {
+                hairTypeUpDown.Value = c.Choice.FeatureID;
+            }
+        }
     }
 }
