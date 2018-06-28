@@ -50,11 +50,23 @@
             this.selectNpcButton = new System.Windows.Forms.Button();
             this.selectSavedCharButton = new System.Windows.Forms.Button();
             this.selectHairStyleButton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.hairColorUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.highLightUpDown = new System.Windows.Forms.NumericUpDown();
+            this.selectHairColorButton = new System.Windows.Forms.Button();
+            this.selectHighlightsButton = new System.Windows.Forms.Button();
+            this.hasHighlightsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.skinColorUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.heightUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bustSizeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.raceFeatureSizeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hairTypeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.raceFeatureTypeUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hairColorUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.highLightUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skinColorUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // raceComboBox
@@ -96,7 +108,7 @@
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(304, 251);
+            this.applyButton.Location = new System.Drawing.Point(304, 360);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(75, 23);
             this.applyButton.TabIndex = 4;
@@ -107,7 +119,7 @@
             // legacyMarkCheckBox
             // 
             this.legacyMarkCheckBox.AutoSize = true;
-            this.legacyMarkCheckBox.Location = new System.Drawing.Point(159, 121);
+            this.legacyMarkCheckBox.Location = new System.Drawing.Point(162, 358);
             this.legacyMarkCheckBox.Name = "legacyMarkCheckBox";
             this.legacyMarkCheckBox.Size = new System.Drawing.Size(88, 17);
             this.legacyMarkCheckBox.TabIndex = 5;
@@ -208,7 +220,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(156, 233);
+            this.label8.Location = new System.Drawing.Point(10, 273);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 17;
@@ -216,14 +228,14 @@
             // 
             // raceFeatureTypeUpDown
             // 
-            this.raceFeatureTypeUpDown.Location = new System.Drawing.Point(159, 249);
+            this.raceFeatureTypeUpDown.Location = new System.Drawing.Point(13, 289);
             this.raceFeatureTypeUpDown.Name = "raceFeatureTypeUpDown";
             this.raceFeatureTypeUpDown.Size = new System.Drawing.Size(120, 20);
             this.raceFeatureTypeUpDown.TabIndex = 16;
             // 
             // selectNpcButton
             // 
-            this.selectNpcButton.Location = new System.Drawing.Point(159, 180);
+            this.selectNpcButton.Location = new System.Drawing.Point(162, 328);
             this.selectNpcButton.Name = "selectNpcButton";
             this.selectNpcButton.Size = new System.Drawing.Size(75, 23);
             this.selectNpcButton.TabIndex = 18;
@@ -233,7 +245,7 @@
             // 
             // selectSavedCharButton
             // 
-            this.selectSavedCharButton.Location = new System.Drawing.Point(240, 180);
+            this.selectSavedCharButton.Location = new System.Drawing.Point(243, 328);
             this.selectSavedCharButton.Name = "selectSavedCharButton";
             this.selectSavedCharButton.Size = new System.Drawing.Size(136, 23);
             this.selectSavedCharButton.TabIndex = 19;
@@ -243,7 +255,7 @@
             // 
             // selectHairStyleButton
             // 
-            this.selectHairStyleButton.Location = new System.Drawing.Point(285, 32);
+            this.selectHairStyleButton.Location = new System.Drawing.Point(288, 32);
             this.selectHairStyleButton.Name = "selectHairStyleButton";
             this.selectHairStyleButton.Size = new System.Drawing.Size(91, 23);
             this.selectHairStyleButton.TabIndex = 20;
@@ -251,11 +263,114 @@
             this.selectHairStyleButton.UseVisualStyleBackColor = true;
             this.selectHairStyleButton.Click += new System.EventHandler(this.selectHairStyleButton_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(156, 61);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Hair Color";
+            // 
+            // hairColorUpDown
+            // 
+            this.hairColorUpDown.Location = new System.Drawing.Point(159, 77);
+            this.hairColorUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.hairColorUpDown.Name = "hairColorUpDown";
+            this.hairColorUpDown.Size = new System.Drawing.Size(120, 20);
+            this.hairColorUpDown.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(156, 104);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Highlights Color";
+            // 
+            // highLightUpDown
+            // 
+            this.highLightUpDown.Location = new System.Drawing.Point(159, 120);
+            this.highLightUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.highLightUpDown.Name = "highLightUpDown";
+            this.highLightUpDown.Size = new System.Drawing.Size(120, 20);
+            this.highLightUpDown.TabIndex = 23;
+            // 
+            // selectHairColorButton
+            // 
+            this.selectHairColorButton.Location = new System.Drawing.Point(288, 75);
+            this.selectHairColorButton.Name = "selectHairColorButton";
+            this.selectHairColorButton.Size = new System.Drawing.Size(91, 23);
+            this.selectHairColorButton.TabIndex = 25;
+            this.selectHairColorButton.Text = "Select Color";
+            this.selectHairColorButton.UseVisualStyleBackColor = true;
+            this.selectHairColorButton.Click += new System.EventHandler(this.selectHairColorButton_Click);
+            // 
+            // selectHighlightsButton
+            // 
+            this.selectHighlightsButton.Location = new System.Drawing.Point(288, 118);
+            this.selectHighlightsButton.Name = "selectHighlightsButton";
+            this.selectHighlightsButton.Size = new System.Drawing.Size(91, 23);
+            this.selectHighlightsButton.TabIndex = 26;
+            this.selectHighlightsButton.Text = "Select Color";
+            this.selectHighlightsButton.UseVisualStyleBackColor = true;
+            this.selectHighlightsButton.Click += new System.EventHandler(this.selectHighlightsButton_Click);
+            // 
+            // hasHighlightsCheckBox
+            // 
+            this.hasHighlightsCheckBox.AutoSize = true;
+            this.hasHighlightsCheckBox.Location = new System.Drawing.Point(159, 147);
+            this.hasHighlightsCheckBox.Name = "hasHighlightsCheckBox";
+            this.hasHighlightsCheckBox.Size = new System.Drawing.Size(94, 17);
+            this.hasHighlightsCheckBox.TabIndex = 27;
+            this.hasHighlightsCheckBox.Text = "Has Highlights";
+            this.hasHighlightsCheckBox.UseVisualStyleBackColor = true;
+            this.hasHighlightsCheckBox.CheckedChanged += new System.EventHandler(this.hasHighlightsCheckBox_CheckedChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(156, 190);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Hair Color";
+            // 
+            // skinColorUpDown
+            // 
+            this.skinColorUpDown.Location = new System.Drawing.Point(159, 206);
+            this.skinColorUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.skinColorUpDown.Name = "skinColorUpDown";
+            this.skinColorUpDown.Size = new System.Drawing.Size(120, 20);
+            this.skinColorUpDown.TabIndex = 28;
+            // 
             // EditCustomizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 286);
+            this.ClientSize = new System.Drawing.Size(391, 395);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.skinColorUpDown);
+            this.Controls.Add(this.hasHighlightsCheckBox);
+            this.Controls.Add(this.selectHighlightsButton);
+            this.Controls.Add(this.selectHairColorButton);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.highLightUpDown);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.hairColorUpDown);
             this.Controls.Add(this.selectHairStyleButton);
             this.Controls.Add(this.selectSavedCharButton);
             this.Controls.Add(this.selectNpcButton);
@@ -288,6 +403,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.raceFeatureSizeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hairTypeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.raceFeatureTypeUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hairColorUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.highLightUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skinColorUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,5 +434,14 @@
         private System.Windows.Forms.Button selectNpcButton;
         private System.Windows.Forms.Button selectSavedCharButton;
         private System.Windows.Forms.Button selectHairStyleButton;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown hairColorUpDown;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown highLightUpDown;
+        private System.Windows.Forms.Button selectHairColorButton;
+        private System.Windows.Forms.Button selectHighlightsButton;
+        private System.Windows.Forms.CheckBox hasHighlightsCheckBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown skinColorUpDown;
     }
 }

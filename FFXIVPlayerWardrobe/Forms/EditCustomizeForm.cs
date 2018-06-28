@@ -4,10 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FFXIVPlayerWardrobe.AssetReaders;
+using FFXIVPlayerWardrobe.Properties;
 
 namespace FFXIVPlayerWardrobe.Forms
 {
@@ -45,6 +49,8 @@ namespace FFXIVPlayerWardrobe.Forms
 
         private ExdCsvReader _exdProvider;
 
+        private CmpReader _colorMap = new CmpReader(Resources.human);
+
         public EditCustomizeForm(byte[] customize, ExdCsvReader exdProvider)
         {
             InitializeComponent();
@@ -63,6 +69,10 @@ namespace FFXIVPlayerWardrobe.Forms
             genderComboBox.SelectedIndex = _customize[0x1];
             heightUpDown.Value = _customize[0x3];
             hairTypeUpDown.Value = _customize[0x6];
+            hasHighlightsCheckBox.Checked = (_customize[0x7] & (1 << 7)) != 0;
+            skinColorUpDown.Value = _customize[0x8];
+            hairColorUpDown.Value = _customize[0xA];
+            highLightUpDown.Value = _customize[0xB];
             raceFeatureSizeUpDown.Value = _customize[0x15];
             raceFeatureTypeUpDown.Value = _customize[0x16];
             bustSizeUpDown.Value = _customize[0x17];
@@ -127,6 +137,9 @@ namespace FFXIVPlayerWardrobe.Forms
             _customize[0x3] = (byte) heightUpDown.Value;
             _customize[0x4] = (byte) ((raceComboBox.SelectedIndex + 1) * 2 - 1 + tribeComboBox.SelectedIndex);
             _customize[0x6] = (byte) hairTypeUpDown.Value;
+            _customize[0x8] = (byte) skinColorUpDown.Value;
+            _customize[0xA] = (byte) hairColorUpDown.Value;
+            _customize[0xB] = (byte) highLightUpDown.Value;
             _customize[0x15] = (byte) raceFeatureSizeUpDown.Value;
             _customize[0x16] = (byte) raceFeatureTypeUpDown.Value;
             _customize[0x17] = (byte) bustSizeUpDown.Value;
@@ -173,6 +186,54 @@ namespace FFXIVPlayerWardrobe.Forms
             {
                 hairTypeUpDown.Value = c.Choice.FeatureID;
             }
+        }
+
+        private void selectHairColorButton_Click(object sender, EventArgs e)
+        {
+            var c = new CharaMakeColorSelector(_colorMap, 3584, 255, (int) hairColorUpDown.Value);
+            c.ShowDialog();
+
+            if (c.Choice != -1)
+            {
+                _customize[0xA] = (byte) c.Choice;
+                FillDefaults();
+            }
+        }
+
+        private void selectHighlightsButton_Click(object sender, EventArgs e)
+        {
+            var c = new CharaMakeColorSelector(_colorMap, 3584, 255, (int) highLightUpDown.Value);
+            c.ShowDialog();
+
+            if (c.Choice != -1)
+            {
+                _customize[0xB] = (byte) c.Choice;
+                FillDefaults();
+            }
+        }
+
+        // TODO: Need to find correct indices
+        private void selectSkinColorButton_Click(object sender, EventArgs e)
+        {
+            var c = new CharaMakeColorSelector(_colorMap, 3584, 255, (int) skinColorUpDown.Value);
+            c.ShowDialog();
+
+            if (c.Choice != -1)
+            {
+                _customize[0x8] = (byte) c.Choice;
+                FillDefaults();
+            }
+        }
+
+        private void hasHighlightsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(hasHighlightsCheckBox.Checked)
+                _customize[0x7] = (byte)(_customize[0x7] | (1 << 7));
+            else
+                _customize[0x7] = (byte)(_customize[0x7] &~ (1 << 7));
+
+            Debug.WriteLine(_customize[0x7].ToString("X"));
+            Debug.WriteLine(Convert.ToString(_customize[0x7], 2).PadLeft(8, '0'));
         }
     }
 }

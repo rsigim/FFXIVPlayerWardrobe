@@ -710,5 +710,10 @@ namespace FFXIVPlayerWardrobe
             if (res == DialogResult.Yes)
                 System.Diagnostics.Process.Start("https://github.com/goaaats/FFXIVPlayerWardrobe/wiki/Usage-Guide");
         }
+
+        private void guideAskInfoLabel_Click(object sender, EventArgs e)
+        {
+            AskGuide();
+        }
     }
 }

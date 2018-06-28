@@ -43,6 +43,7 @@
             this.openGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bodyGearTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -86,7 +87,7 @@
             this.openCustomizeEditForm = new System.Windows.Forms.Button();
             this.customizeTextBox = new System.Windows.Forms.TextBox();
             this.customizeApplyButton = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
+            this.guideAskInfoLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -251,6 +252,16 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gear";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label15.Location = new System.Drawing.Point(6, 251);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 13);
+            this.label15.TabIndex = 52;
+            this.label15.Text = "/gpose to test";
             // 
             // label1
             // 
@@ -637,21 +648,24 @@
             this.customizeApplyButton.UseVisualStyleBackColor = true;
             this.customizeApplyButton.Click += new System.EventHandler(this.customizeApplyButton_Click);
             // 
-            // label15
+            // guideAskInfoLabel
             // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label15.Location = new System.Drawing.Point(6, 251);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 13);
-            this.label15.TabIndex = 52;
-            this.label15.Text = "/gpose to test";
+            this.guideAskInfoLabel.AutoSize = true;
+            this.guideAskInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guideAskInfoLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.guideAskInfoLabel.Location = new System.Drawing.Point(169, 416);
+            this.guideAskInfoLabel.Name = "guideAskInfoLabel";
+            this.guideAskInfoLabel.Size = new System.Drawing.Size(171, 13);
+            this.guideAskInfoLabel.TabIndex = 10;
+            this.guideAskInfoLabel.Text = "Having problems? Open the guide!";
+            this.guideAskInfoLabel.Click += new System.EventHandler(this.guideAskInfoLabel_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 427);
+            this.ClientSize = new System.Drawing.Size(503, 431);
+            this.Controls.Add(this.guideAskInfoLabel);
             this.Controls.Add(this.customizeApplyButton);
             this.Controls.Add(this.customizeTextBox);
             this.Controls.Add(this.openCustomizeEditForm);
@@ -737,6 +751,7 @@
         private System.Windows.Forms.Button customizeApplyButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label guideAskInfoLabel;
     }
 }
 
