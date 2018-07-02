@@ -743,7 +743,21 @@ namespace FFXIVPlayerWardrobe
 
         private void setWeatherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var c = new WeatherSelector(_exdProvider.TerritoryTypes[_memoryMan.GetTerritoryType()].WeatherRate.AllowedWeathers, _memoryMan.GetWeather());
+            int territory = _memoryMan.GetTerritoryType();
+
+            if (!_exdProvider.TerritoryTypes.ContainsKey(territory))
+            {
+                Util.ShowError("Could not find your current zone. Make sure you are using the latest version.");
+                return;
+            }
+
+            if (_exdProvider.TerritoryTypes[territory].WeatherRate == null)
+            {
+                Util.ShowError("Setting weather is not supported for your current zone.");
+                return;
+            }
+
+            var c = new WeatherSelector(_exdProvider.TerritoryTypes[territory].WeatherRate.AllowedWeathers, _memoryMan.GetWeather());
             c.ShowDialog();
 
             if (c.Choice != null)
