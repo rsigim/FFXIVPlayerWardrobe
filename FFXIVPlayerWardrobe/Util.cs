@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -175,5 +178,9 @@ namespace FFXIVPlayerWardrobe
             SendMessage(textBox.Handle, EM_SETCUEBANNER, 0, watermarkText);
         }
 
+        public static void ShowError(string message, [CallerMemberName]string memberName = "")
+        {
+            MessageBox.Show(message, memberName + " Error " + Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

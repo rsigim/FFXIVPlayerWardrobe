@@ -38,6 +38,9 @@
             this.gearSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weatherTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setTimeOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setWeatherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,6 +121,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
             this.gearSetToolStripMenuItem,
+            this.weatherTimeToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -171,6 +175,29 @@
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // weatherTimeToolStripMenuItem
+            // 
+            this.weatherTimeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setTimeOffsetToolStripMenuItem,
+            this.setWeatherToolStripMenuItem});
+            this.weatherTimeToolStripMenuItem.Name = "weatherTimeToolStripMenuItem";
+            this.weatherTimeToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.weatherTimeToolStripMenuItem.Text = "Weather && Time";
+            // 
+            // setTimeOffsetToolStripMenuItem
+            // 
+            this.setTimeOffsetToolStripMenuItem.Name = "setTimeOffsetToolStripMenuItem";
+            this.setTimeOffsetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setTimeOffsetToolStripMenuItem.Text = "Set time offset";
+            this.setTimeOffsetToolStripMenuItem.Click += new System.EventHandler(this.setTimeOffsetToolStripMenuItem_Click);
+            // 
+            // setWeatherToolStripMenuItem
+            // 
+            this.setWeatherToolStripMenuItem.Name = "setWeatherToolStripMenuItem";
+            this.setWeatherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setWeatherToolStripMenuItem.Text = "Set weather";
+            this.setWeatherToolStripMenuItem.Click += new System.EventHandler(this.setWeatherToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -681,7 +708,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FFXIVPlayerWardrobe ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -752,6 +779,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label guideAskInfoLabel;
+        private System.Windows.Forms.ToolStripMenuItem weatherTimeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setTimeOffsetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setWeatherToolStripMenuItem;
     }
 }
 

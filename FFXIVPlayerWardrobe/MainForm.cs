@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using FFXIVPlayerWardrobe.Forms;
 using FFXIVPlayerWardrobe.Memory;
 using FFXIVPlayerWardrobe.Properties;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using GearTuple = System.Tuple<int, int, int>;
 
@@ -30,13 +31,14 @@ namespace FFXIVPlayerWardrobe
         private Mem _memory;
         private BackgroundWorker _worker = new BackgroundWorker();
         private ExdCsvReader _exdProvider = new ExdCsvReader();
+        private MemoryManager _memoryMan;
 
         private IntPtr _customizeOffset = IntPtr.Zero;
 
         private GearSet _gearSet = new GearSet();
         private GearSet _cGearSet = new GearSet();
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
@@ -44,6 +46,9 @@ namespace FFXIVPlayerWardrobe
                 //CheckResidentList();
                 //CheckItemList();
 #endif
+                _exdProvider.MakeWeatherList();
+                _exdProvider.MakeWeatherRateList();
+                _exdProvider.MakeTerritoryTypeList();
 
                 this.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
 #if DEBUG
@@ -64,7 +69,7 @@ namespace FFXIVPlayerWardrobe
 
                 if (chooser.Choice == null)
                 {
-                    MessageBox.Show("No character chosen.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Util.ShowError("No character chosen.");
 #if !DEBUG
                     Environment.Exit(0);
 #endif
@@ -91,7 +96,7 @@ namespace FFXIVPlayerWardrobe
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("An error occurred reading the process list.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Util.ShowError("An error occurred reading the process list.\n\n" + exc);
 #if !DEBUG
                     Environment.Exit(0);
 #endif
@@ -99,7 +104,7 @@ namespace FFXIVPlayerWardrobe
 
                 if (ffxivProcess == null)
                 {
-                    MessageBox.Show("FFXIV DX11 is not running. Make sure you're using the DirectX11 version of the game.\n\nThis can be changed in the launcher by turning Config->DirectX 11 Support on.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Util.ShowError("FFXIV DX11 is not running. Make sure you're using the DirectX11 version of the game.\n\nThis can be changed in the launcher by turning Config->DirectX 11 Support on.");
 #if !DEBUG
                     AskGuide();
                     Environment.Exit(0);
@@ -109,11 +114,13 @@ namespace FFXIVPlayerWardrobe
                 _memory = new Mem();
                 if (!_memory.OpenProcess(ffxivProcess.ProcessName))
                 {
-                    MessageBox.Show("An error occurred opening the FFXIV process.", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Util.ShowError("An error occurred opening the FFXIV process.");
 #if !DEBUG
                     Environment.Exit(0);
 #endif
                 }
+
+                _memoryMan = new MemoryManager(_memory);
 
                 var scanForm = new ScanProgressForm(_memory, searchString);
                 scanForm.Show();
@@ -143,7 +150,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("An error occurred during initialization.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.ShowError("An error occurred during initialization.\n\n" + exc);
 #if !DEBUG
                 Environment.Exit(0);
 #endif
@@ -293,7 +300,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.ShowError("One or more fields were not formatted correctly.\n\n" + exc);
             }
         }
 
@@ -375,7 +382,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.ShowError("One or more fields were not formatted correctly.\n\n" + exc);
             }
         }
 
@@ -617,11 +624,11 @@ namespace FFXIVPlayerWardrobe
                     customizeApplyButton_Click(null, null);
 
                     File.WriteAllText(fileDialog.FileName, _cGearSet.ToJson());
-                    MessageBox.Show($"Capture saved to {fileDialog.FileName}.", "FFXIVMon Reborn", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show($"Gearset {fileDialog.FileName}.", "FFXIVPlayerWardrobe", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("Could not save gearset.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Util.ShowError("Could not save gearset.\n\n" + exc);
                 }
             }
         }
@@ -698,7 +705,7 @@ namespace FFXIVPlayerWardrobe
             }
             catch (Exception exc)
             {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.ShowError("One or more fields were not formatted correctly.\n\n" + exc);
             }
         }
 
@@ -714,6 +721,35 @@ namespace FFXIVPlayerWardrobe
         private void guideAskInfoLabel_Click(object sender, EventArgs e)
         {
             AskGuide();
+        }
+
+        private void setTimeOffsetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var input = Interaction.InputBox("This will set a offset for the current eorzea time.", "Set Time offset",
+                _memoryMan.GetTimeOffset().ToString());
+
+            if (input == "")
+                return;
+
+            try
+            {
+                _memoryMan.SetTimeOffset(int.Parse(input));
+            }
+            catch (Exception exc)
+            {
+                Util.ShowError("One or more fields were not formatted correctly.\n\n" + exc);
+            }
+        }
+
+        private void setWeatherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var c = new WeatherSelector(_exdProvider.TerritoryTypes[_memoryMan.GetTerritoryType()].WeatherRate.AllowedWeathers, _memoryMan.GetWeather());
+            c.ShowDialog();
+
+            if (c.Choice != null)
+            {
+                _memoryMan.SetWeather((byte) c.Choice.Index);
+            }
         }
     }
 }

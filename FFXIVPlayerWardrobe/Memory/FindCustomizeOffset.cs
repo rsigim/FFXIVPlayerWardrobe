@@ -20,7 +20,7 @@ namespace FFXIVPlayerWardrobe.Memory
 
             if (hits.Count() == 0)
             {
-                MessageBox.Show($"Could not find character data - make sure you selected the correct entry and try to re-export the data.\n\n=-=-= PROBLEM INFORMATION =-=-=\nInfo:\nPass 1\ncheckCounter: {checkCounter}\nHits: {hits.Count()}\n{customize}", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.ShowError($"Could not find character data - make sure you selected the correct entry and try to re-export the data.\n\n=-=-= PROBLEM INFORMATION =-=-=\nInfo:\nPass 1\ncheckCounter: {checkCounter}\nHits: {hits.Count()}\n{customize}");
                 MainForm.AskGuide();
                 Environment.Exit(0);
             }
@@ -58,7 +58,7 @@ namespace FFXIVPlayerWardrobe.Memory
 
             if (customizeOffset == IntPtr.Zero && !checkCounter)
             {
-                MessageBox.Show($"Could not find character data - make sure you selected the correct entry and try to re-export the data.\n\n=-=-= PROBLEM INFORMATION =-=-=\nInfo:\nPass 2\ncheckCounter: {checkCounter}\nHits: {hits.Count()}\n{customize}\nScanned:\n{scanLog}", "Error " + Assembly.GetExecutingAssembly().GetName().Version.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.ShowError($"Could not find character data - make sure you selected the correct entry and try to re-export the data.\n\n=-=-= PROBLEM INFORMATION =-=-=\nInfo:\nPass 2\ncheckCounter: {checkCounter}\nHits: {hits.Count()}\n{customize}\nScanned:\n{scanLog}");
                 MainForm.AskGuide();
                 Environment.Exit(0);
             }

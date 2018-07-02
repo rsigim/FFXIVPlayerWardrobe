@@ -88,7 +88,14 @@
     <Compile Include="Forms\EditCustomizeForm.Designer.cs">
       <DependentUpon>EditCustomizeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WeatherSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WeatherSelector.Designer.cs">
+      <DependentUpon>WeatherSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Memory\Definitions.cs" />
+    <Compile Include="Memory\MemoryManager.cs" />
     <Compile Include="Memory\FindCustomizeOffset.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -135,6 +142,9 @@
     <EmbeddedResource Include="Forms\EditCustomizeForm.resx">
       <DependentUpon>EditCustomizeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WeatherSelector.resx">
+      <DependentUpon>WeatherSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +185,9 @@
     <None Include="Resources\enpcresident.exh_en.csv" />
     <None Include="Resources\human.cmp" />
     <None Include="Resources\item.exh_en.csv" />
+    <None Include="Resources\territorytype.exh.csv" />
+    <None Include="Resources\weatherrate.exh.csv" />
+    <None Include="Resources\weather_0.exh_en.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

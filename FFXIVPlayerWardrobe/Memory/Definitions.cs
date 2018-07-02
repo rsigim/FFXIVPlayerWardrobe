@@ -24,5 +24,9 @@ namespace FFXIVPlayerWardrobe.Memory
 
         public const int CHARA_NAME_OFF = -0x1600;
         public const int CHARA_RUN_COUNTER_OFF = -0x7B8;
+
+        public const string TIMEOFFSETPTR = "ffxiv_dx11.exe+018DC2D0,10,8,28,80"; // 4 byte
+        public const string WEATHEROFFSETPTR = "ffxiv_dx11.exe+018DA218,27"; // 1 byte
+        public const string TERRITORYTYPEOFFSETPTR = "ffxiv_dx11.exe+0192F938,4C"; // 4 byte
     }
 }
