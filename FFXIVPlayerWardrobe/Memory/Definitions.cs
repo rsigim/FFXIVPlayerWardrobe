@@ -37,7 +37,7 @@ namespace FFXIVPlayerWardrobe.Memory
             }
         }
 
-        public static string Json => JsonConvert.SerializeObject(Definitions.Instance);
+        public static string Json => JsonConvert.SerializeObject(new Definitions());
 
         public int GEAR_HEAD_OFF = -0x80;
         public int GEAR_BODY_OFF = -0x7C;
