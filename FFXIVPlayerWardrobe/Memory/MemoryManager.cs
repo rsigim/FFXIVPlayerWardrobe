@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FFXIVPlayerWardrobe.Memory
 {
-    class MemoryManager
+    public class MemoryManager
     {
         private readonly Mem _memory;
 
@@ -17,27 +17,27 @@ namespace FFXIVPlayerWardrobe.Memory
 
         public int GetTimeOffset()
         {
-            return _memory.readInt(Definitions.TIMEOFFSETPTR);
+            return _memory.readInt(Definitions.Instance.TIMEOFFSETPTR);
         }
 
         public void SetTimeOffset(int offset)
         {
-            _memory.writeMemory(Definitions.TIMEOFFSETPTR, "int", offset.ToString());
+            _memory.writeMemory(Definitions.Instance.TIMEOFFSETPTR, "int", offset.ToString());
         }
 
         public int GetTerritoryType()
         {
-            return _memory.readInt(Definitions.TERRITORYTYPEOFFSETPTR);
+            return _memory.readInt(Definitions.Instance.TERRITORYTYPEOFFSETPTR);
         }
 
         public int GetWeather()
         {
-            return _memory.readByte(Definitions.WEATHEROFFSETPTR);
+            return _memory.readByte(Definitions.Instance.WEATHEROFFSETPTR);
         }
 
         public void SetWeather(byte id)
         {
-            _memory.writeBytes(Definitions.WEATHEROFFSETPTR, new[] {id});
+            _memory.writeBytes(Definitions.Instance.WEATHEROFFSETPTR, new[] {id});
         }
     }
 }
