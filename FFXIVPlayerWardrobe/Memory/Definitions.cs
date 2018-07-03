@@ -25,8 +25,9 @@ namespace FFXIVPlayerWardrobe.Memory
                     try
                     {
                         var result = client.DownloadString(DEFINITION_JSON_URL);
+                        _cachedInstance = JsonConvert.DeserializeObject<Definitions>(result);
 
-                        return JsonConvert.DeserializeObject<Definitions>(result);
+                        return _cachedInstance;
                     }
                     catch (Exception)
                     {
