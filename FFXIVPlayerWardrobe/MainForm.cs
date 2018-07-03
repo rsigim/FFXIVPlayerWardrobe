@@ -42,7 +42,6 @@ namespace FFXIVPlayerWardrobe
         {
             try
             {
-                MessageBox.Show(Definitions.Json);
 #if DEBUG
                 //CheckResidentList();
                 //CheckItemList();
