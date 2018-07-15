@@ -122,6 +122,37 @@ namespace FFXIVPlayerWardrobe
 
                 _memoryMan = new MemoryManager(_memory);
 
+                /*
+                MessageBox.Show(_memoryMan.GetActorTableLength().ToString());
+
+
+                while (true)
+                {
+                    var tbl = _memoryMan.GetActorTable();
+                    if(tbl.Length < 2)
+                        continue;
+                    
+                    var myActorId = tbl[0].ActorID;
+
+                    foreach (var actorTableEntry in tbl)
+                    {
+                        if (actorTableEntry.OwnerID == myActorId)
+                        {
+                            Debug.WriteLine("Found at " + actorTableEntry.Offset.ToString("X"));
+                            actorTableEntry.ModelChara = 2310;
+                            actorTableEntry.BnpcBase = 0;
+                            actorTableEntry.Name = "Ass";
+                            if(!_memoryMan.WriteActorTableEntry(actorTableEntry))
+                                Debug.WriteLine("Not in actor table???");
+                        }
+                        
+                    }
+                }
+
+
+                Environment.Exit(0);
+                */
+
                 var scanForm = new ScanProgressForm(_memory, searchString);
                 scanForm.Show();
                 scanForm.Worker.RunWorkerCompleted += ScanWorker_RunWorkerCompleted;

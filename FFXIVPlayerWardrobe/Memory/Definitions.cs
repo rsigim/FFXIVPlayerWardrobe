@@ -59,5 +59,7 @@ namespace FFXIVPlayerWardrobe.Memory
         public string TIMEOFFSETPTR = "ffxiv_dx11.exe+18E3330,10,8,28,80"; // 4 byte
         public string WEATHEROFFSETPTR = "ffxiv_dx11.exe+18E1278,27"; // 1 byte
         public string TERRITORYTYPEOFFSETPTR = "ffxiv_dx11.exe+19369A8,4C"; // 4 byte
+
+        public string ACTORTABLEOFFSET = "ffxiv_dx11.exe+18FF738";
     }
 }

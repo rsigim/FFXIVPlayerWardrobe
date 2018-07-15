@@ -19,7 +19,7 @@ namespace FFXIVPlayerWardrobe
         {
             if (bytes == null)
             {
-                return string.Empty;
+                return String.Empty;
             }
 
             var hexChars = "0123456789ABCDEF".ToCharArray();
@@ -65,9 +65,9 @@ namespace FFXIVPlayerWardrobe
                     else
                     {
                         var by = bytes[i + j];
-                        line[hexColumn] = hexChars[(by >> 4) & 0xF];
-                        line[hexColumn + 1] = hexChars[by & 0xF];
-                        line[charColumn] = by < 32 ? '.' : (char)by;
+                        line[hexColumn] = hexChars[(@by >> 4) & 0xF];
+                        line[hexColumn + 1] = hexChars[@by & 0xF];
+                        line[charColumn] = @by < 32 ? '.' : (char)@by;
                     }
 
                     hexColumn += 3;
@@ -83,7 +83,7 @@ namespace FFXIVPlayerWardrobe
         public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
         }
@@ -91,7 +91,7 @@ namespace FFXIVPlayerWardrobe
         public static DateTime UnixMSTimeStampToDateTime(long unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddMilliseconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
         }
@@ -181,6 +181,16 @@ namespace FFXIVPlayerWardrobe
         public static void ShowError(string message, [CallerMemberName]string memberName = "")
         {
             MessageBox.Show(message, memberName + " Error " + Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static bool IsValidFFXIVNameChar(char c)
+        {
+            char[] allowed = new[] { '-', '\'' };
+
+            bool isLetter = Char.IsLetter(c);
+            bool isFfAllowed = allowed.Contains(c);
+
+            return isLetter || isFfAllowed;
         }
     }
 }

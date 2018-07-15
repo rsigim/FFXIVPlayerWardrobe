@@ -23,7 +23,13 @@ namespace FFXIVPlayerWardrobe.Forms
 
             for (int i = start; i < start + length; i++)
             {
-                var item = new ListViewItem((i - start).ToString());
+#if DEBUG
+                var text = $"{i} #{colorMap.Colors[i].ToArgb().ToString("X8")}";
+#else
+                var text = (i - start).ToString();
+ #endif
+
+                var item = new ListViewItem(text);
                 item.BackColor = colorMap.Colors[i];
 
                 colorListView.Items.Add(item);

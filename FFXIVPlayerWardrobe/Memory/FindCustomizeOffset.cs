@@ -31,7 +31,7 @@ namespace FFXIVPlayerWardrobe.Memory
             {
                 string name = Encoding.UTF8.GetString(memory.readBytes((hit + Definitions.Instance.CHARA_NAME_OFF).ToString("X"), 32));
                 Debug.WriteLine(name);
-                if (name.Split(' ')[0].All(IsValidFFXIVNameChar))
+                if (name.Split(' ')[0].All(Util.IsValidFFXIVNameChar))
                 {
                     if (checkCounter)
                     {
@@ -67,16 +67,6 @@ namespace FFXIVPlayerWardrobe.Memory
                 return await Find(memory, customize, false);
 
             return customizeOffset;
-        }
-
-        private static bool IsValidFFXIVNameChar(char c)
-        {
-            char[] allowed = new[] { '-', '\'' };
-
-            bool isLetter = Char.IsLetter(c);
-            bool isFfAllowed = allowed.Contains(c);
-
-            return isLetter || isFfAllowed;
         }
     }
 }

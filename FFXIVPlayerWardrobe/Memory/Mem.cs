@@ -562,6 +562,11 @@ namespace FFXIVPlayerWardrobe.Memory
                 return 0;
         }
 
+        public string readString(long address)
+        {
+            return readString(address.ToString("X"));
+        }
+
         /// <summary>
         /// Read a string value from an address.
         /// </summary>
@@ -604,6 +609,11 @@ namespace FFXIVPlayerWardrobe.Memory
                 return BitConverter.ToInt32(memory, 0);
             else
                 return 0;
+        }
+
+        public long readLong(long address)
+        {
+            return readLong(address.ToString("X"));
         }
 
         /// <summary>
@@ -944,7 +954,7 @@ namespace FFXIVPlayerWardrobe.Memory
         /// <param name="path">path to ini file</param>
         /// <param name="size">size of address (default is 8)</param>
         /// <returns></returns>
-        private UIntPtr getCode(string name, string path, int size = 8)
+        public UIntPtr getCode(string name, string path, int size = 8)
         {
             if (is64bit())
             {
