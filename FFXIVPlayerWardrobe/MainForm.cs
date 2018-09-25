@@ -33,8 +33,6 @@ namespace FFXIVPlayerWardrobe
         private ExdCsvReader _exdProvider = new ExdCsvReader();
         private MemoryManager _memoryMan;
 
-        private IntPtr _customizeOffset = IntPtr.Zero;
-
         private GearSet _gearSet = new GearSet();
         private GearSet _cGearSet = new GearSet();
 
@@ -58,29 +56,10 @@ namespace FFXIVPlayerWardrobe
                 if (Properties.Settings.Default.FirstLaunch)
                 {
                     MessageBox.Show(
-                        "Please save the character data you are going to log in as in the FFXIV Lobby(right click->Save Appearance Data).\nThen, log in and press OK.\n\n!!!DISCLAIMER!!!\nNever use the Aesthetician while using this tool.\nI'm not responsible for any problems that might occur.");
+                        "!!!DISCLAIMER!!!\nNever use the Aesthetician while using this tool.\nI'm not responsible for any problems that might occur.");
                     Properties.Settings.Default.FirstLaunch = false;
                     Properties.Settings.Default.Save();
                 }
-
-                var chooser = new CharaSaveChooseForm("Please choose the exact character you are playing as.");
-                chooser.StartPosition = FormStartPosition.CenterScreen;
-                chooser.ShowDialog();
-
-                if (chooser.Choice == null)
-                {
-                    Util.ShowError("No character chosen.");
-#if !DEBUG
-                    Environment.Exit(0);
-#endif
-                }
-
-                _gearSet.Customize = chooser.Choice;
-
-                var searchCA = Util.ByteArrayToString(chooser.Choice).ToCharArray();
-                searchCA[36] = '?';
-                searchCA[37] = '?';
-                var searchString = new string(searchCA);
 
                 Process ffxivProcess = null;
 
@@ -122,15 +101,10 @@ namespace FFXIVPlayerWardrobe
 
                 _memoryMan = new MemoryManager(_memory);
 
-                var scanForm = new ScanProgressForm(_memory, searchString);
-                scanForm.Show();
-                scanForm.Worker.RunWorkerCompleted += ScanWorker_RunWorkerCompleted;
-                scanForm.Run();
+            SetupDefaults();
+            FillDefaults();
 
-
-#if !DEBUG
-                SynchronizationContext.Current.Post((obj) => this.Visible = false, null);
-#endif
+            this.Visible = true;
 
                 _worker.DoWork += WorkerOnDoWork;
                 _worker.WorkerSupportsCancellation = true;
@@ -158,28 +132,10 @@ namespace FFXIVPlayerWardrobe
 
         }
 
-        private void ScanWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            _customizeOffset = (IntPtr)e.Result;
-
-#if DEBUG
-            offsetLabel.Text = "CustomizeOffset: " + _customizeOffset.ToString("X");
-#else
-            offsetLabel.Text = "";
-#endif
-
-            SetupDefaults();
-            FillDefaults();
-
-            this.Visible = true;
-        }
-
         private void WorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs)
         {
             while (sender is BackgroundWorker mworker && !mworker.CancellationPending)
             {
-                WriteCurrentCustomize();
-
                 if(freezeGearCheckBox.Checked)
                     WriteCurrentGearTuples();
 
@@ -189,21 +145,7 @@ namespace FFXIVPlayerWardrobe
 
         private void SetupDefaults()
         {
-            _gearSet.Customize = _memory.readBytes(_customizeOffset.ToString("X"), 26);
-
-            _gearSet.HeadGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_HEAD_OFF);
-            _gearSet.BodyGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_BODY_OFF);
-            _gearSet.HandsGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_HANDS_OFF);
-            _gearSet.LegsGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_LEGS_OFF);
-            _gearSet.FeetGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_FEET_OFF);
-            _gearSet.EarGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_EAR_OFF);
-            _gearSet.NeckGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_NECK_OFF);
-            _gearSet.WristGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_WRIST_OFF);
-            _gearSet.RRingGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_RRING_OFF);
-            _gearSet.LRingGear = ReadGearTuple(_customizeOffset + Definitions.Instance.GEAR_LRING_OFF);
-
-            _gearSet.MainWep = ReadGearTuple(_customizeOffset + Definitions.Instance.WEP_MAINH_OFF);
-            _gearSet.OffWep = ReadGearTuple(_customizeOffset + Definitions.Instance.WEP_OFFH_OFF);
+            _gearSet = _memoryMan.GetActorTable()[0].Gear;
         }
 
         private void FillDefaults()
@@ -287,29 +229,7 @@ namespace FFXIVPlayerWardrobe
         private void restoreOriginalLookButton_Click(object sender, EventArgs e)
         {
             RestoreDefaultGear();
-            RestoreDefaultCustomize();
             FillDefaults();
-        }
-
-        private void customizeApplyButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _cGearSet.Customize = Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty));
-                WriteCurrentCustomize();
-            }
-            catch (Exception exc)
-            {
-                Util.ShowError("One or more fields were not formatted correctly.\n\n" + exc);
-            }
-        }
-
-        private void WriteCurrentCustomize()
-        {
-            if (_cGearSet.Customize == null)
-                return;
-
-            _memory.writeBytes(_customizeOffset, _cGearSet.Customize);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -318,26 +238,11 @@ namespace FFXIVPlayerWardrobe
                 $"FFXIVPlayerWardrobe - amibu/goaaats\n\nUsing Memory.dll by erfg(https://github.com/erfg12/memory.dll)\n\nItem table: {Resources.item_exh_en.Split('\n').Length - 1} entries\nResident info table: {Resources.enpcresident_exh_en.Split('\n').Length - 1} entries\nResident base table: {Resources.enpcbase_exh.Split('\n').Length - 1} entries");
         }
 
-        private void RestoreDefaultCustomize()
-        {
-            _memory.writeBytes(_customizeOffset, _gearSet.Customize);
-        }
-
         private void RestoreDefaultGear()
         {
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_HEAD_OFF, GearTupleToByteAry(_gearSet.HeadGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_BODY_OFF, GearTupleToByteAry(_gearSet.BodyGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_HANDS_OFF, GearTupleToByteAry(_gearSet.HandsGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_LEGS_OFF, GearTupleToByteAry(_gearSet.LegsGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_FEET_OFF, GearTupleToByteAry(_gearSet.FeetGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_EAR_OFF, GearTupleToByteAry(_gearSet.EarGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_NECK_OFF, GearTupleToByteAry(_gearSet.NeckGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.WristGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_RRING_OFF, GearTupleToByteAry(_gearSet.RRingGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_WRIST_OFF, GearTupleToByteAry(_gearSet.LRingGear));
-
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.WEP_MAINH_OFF, WepTupleToByteAry(_gearSet.MainWep));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.WEP_OFFH_OFF, WepTupleToByteAry(_gearSet.OffWep));
+            var entry = _memoryMan.GetActorTable()[0];
+            entry.Gear = _gearSet;
+            _memoryMan.WriteActorTableEntry( entry );
         }
 
         private void WriteCurrentGearTuples()
@@ -345,19 +250,9 @@ namespace FFXIVPlayerWardrobe
             if (_cGearSet.HeadGear == null)
                 return;
 
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_HEAD_OFF, GearTupleToByteAry(_cGearSet.HeadGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_BODY_OFF, GearTupleToByteAry(_cGearSet.BodyGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_HANDS_OFF, GearTupleToByteAry(_cGearSet.HandsGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_LEGS_OFF, GearTupleToByteAry(_cGearSet.LegsGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_FEET_OFF, GearTupleToByteAry(_cGearSet.FeetGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_EAR_OFF, GearTupleToByteAry(_cGearSet.EarGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_NECK_OFF, GearTupleToByteAry(_cGearSet.NeckGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.WristGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_RRING_OFF, GearTupleToByteAry(_cGearSet.RRingGear));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.GEAR_WRIST_OFF, GearTupleToByteAry(_cGearSet.LRingGear));
-
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.WEP_MAINH_OFF, WepTupleToByteAry(_cGearSet.MainWep));
-            _memory.writeBytes(_customizeOffset + Definitions.Instance.WEP_OFFH_OFF, WepTupleToByteAry(_cGearSet.OffWep));
+            var entry = _memoryMan.GetActorTable()[0];
+            entry.Gear = _cGearSet;
+            _memoryMan.WriteActorTableEntry( entry );
         }
 
         private void WriteGear_Click(object sender, EventArgs e)
@@ -377,6 +272,8 @@ namespace FFXIVPlayerWardrobe
 
                 _cGearSet.MainWep = CommaToGearTuple(mainWepTextBox.Text);
                 _cGearSet.OffWep = CommaToGearTuple(offWepTextBox.Text);
+
+                _cGearSet.Customize = Util.StringToByteArray(customizeTextBox.Text.Replace(" ", string.Empty));
 
                 WriteCurrentGearTuples();
             }
@@ -608,7 +505,7 @@ namespace FFXIVPlayerWardrobe
             if (chooser.Choice != null)
                 customizeTextBox.Text = Util.ByteArrayToString(chooser.Choice);
 
-            customizeApplyButton_Click(null, null);
+            WriteCurrentGearTuples();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -621,7 +518,6 @@ namespace FFXIVPlayerWardrobe
                 try
                 {
                     WriteGear_Click(null, null);
-                    customizeApplyButton_Click(null, null);
 
                     File.WriteAllText(fileDialog.FileName, _cGearSet.ToJson());
                     MessageBox.Show($"Gearset {fileDialog.FileName} saved.", "FFXIVPlayerWardrobe", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -649,7 +545,6 @@ namespace FFXIVPlayerWardrobe
 
                 FillCustoms();
                 WriteCurrentGearTuples();
-                WriteCurrentCustomize();
             }
         }
 
@@ -672,14 +567,13 @@ namespace FFXIVPlayerWardrobe
 
             FillCustoms();
             WriteCurrentGearTuples();
-            WriteCurrentCustomize();
         }
 
         private void offsetLabel_Click(object sender, EventArgs e)
         {
 #if DEBUG
-            var mem = _memory.readBytes((_customizeOffset + Definitions.Instance.CHARA_NAME_OFF).ToString("X"), 2000);
-            File.WriteAllBytes("dump.bin", mem);
+            //var mem = _memory.readBytes((_customizeOffset + Definitions.Instance.CHARA_NAME_OFF).ToString("X"), 2000);
+            //File.WriteAllBytes("dump.bin", mem);
             MessageBox.Show("Dumped memory to dump.bin");
 #endif
         }
@@ -701,7 +595,7 @@ namespace FFXIVPlayerWardrobe
                     return;
 
                 customizeTextBox.Text = Util.ByteArrayToString(c.EditedCustomize);
-                customizeApplyButton_Click(null, null);
+                WriteCurrentGearTuples();
             }
             catch (Exception exc)
             {

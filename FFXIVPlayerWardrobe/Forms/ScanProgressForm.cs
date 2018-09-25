@@ -13,6 +13,7 @@ namespace FFXIVPlayerWardrobe
 {
     public partial class ScanProgressForm : Form
     {
+        /*
         public BackgroundWorker Worker = new BackgroundWorker();
 
         private Mem _memory;
@@ -45,5 +46,6 @@ namespace FFXIVPlayerWardrobe
         {
             doWorkEventArgs.Result = await FindCustomizeOffset.Find(_memory, _customize);
         }
+        */
     }
 }

@@ -89,7 +89,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.openCustomizeEditForm = new System.Windows.Forms.Button();
             this.customizeTextBox = new System.Windows.Forms.TextBox();
-            this.customizeApplyButton = new System.Windows.Forms.Button();
             this.guideAskInfoLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -188,14 +187,14 @@
             // setTimeOffsetToolStripMenuItem
             // 
             this.setTimeOffsetToolStripMenuItem.Name = "setTimeOffsetToolStripMenuItem";
-            this.setTimeOffsetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setTimeOffsetToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.setTimeOffsetToolStripMenuItem.Text = "Set time offset";
             this.setTimeOffsetToolStripMenuItem.Click += new System.EventHandler(this.setTimeOffsetToolStripMenuItem_Click);
             // 
             // setWeatherToolStripMenuItem
             // 
             this.setWeatherToolStripMenuItem.Name = "setWeatherToolStripMenuItem";
-            this.setWeatherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setWeatherToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.setWeatherToolStripMenuItem.Text = "Set weather";
             this.setWeatherToolStripMenuItem.Click += new System.EventHandler(this.setWeatherToolStripMenuItem_Click);
             // 
@@ -451,7 +450,7 @@
             this.freezeGearCheckBox.AutoSize = true;
             this.freezeGearCheckBox.Checked = true;
             this.freezeGearCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.freezeGearCheckBox.Location = new System.Drawing.Point(340, 274);
+            this.freezeGearCheckBox.Location = new System.Drawing.Point(207, 275);
             this.freezeGearCheckBox.Name = "freezeGearCheckBox";
             this.freezeGearCheckBox.Size = new System.Drawing.Size(58, 17);
             this.freezeGearCheckBox.TabIndex = 35;
@@ -640,9 +639,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(398, 270);
+            this.button1.Location = new System.Drawing.Point(187, 228);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(98, 41);
             this.button1.TabIndex = 7;
             this.button1.Text = "Apply";
             this.button1.UseVisualStyleBackColor = true;
@@ -662,18 +661,8 @@
             // 
             this.customizeTextBox.Location = new System.Drawing.Point(12, 33);
             this.customizeTextBox.Name = "customizeTextBox";
-            this.customizeTextBox.Size = new System.Drawing.Size(418, 20);
+            this.customizeTextBox.Size = new System.Drawing.Size(479, 20);
             this.customizeTextBox.TabIndex = 8;
-            // 
-            // customizeApplyButton
-            // 
-            this.customizeApplyButton.Location = new System.Drawing.Point(436, 31);
-            this.customizeApplyButton.Name = "customizeApplyButton";
-            this.customizeApplyButton.Size = new System.Drawing.Size(55, 23);
-            this.customizeApplyButton.TabIndex = 9;
-            this.customizeApplyButton.Text = "Apply";
-            this.customizeApplyButton.UseVisualStyleBackColor = true;
-            this.customizeApplyButton.Click += new System.EventHandler(this.customizeApplyButton_Click);
             // 
             // guideAskInfoLabel
             // 
@@ -693,7 +682,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 431);
             this.Controls.Add(this.guideAskInfoLabel);
-            this.Controls.Add(this.customizeApplyButton);
             this.Controls.Add(this.customizeTextBox);
             this.Controls.Add(this.openCustomizeEditForm);
             this.Controls.Add(this.groupBox1);
@@ -775,7 +763,6 @@
         private System.Windows.Forms.ToolStripMenuItem openGuideToolStripMenuItem;
         private System.Windows.Forms.Button openCustomizeEditForm;
         private System.Windows.Forms.TextBox customizeTextBox;
-        private System.Windows.Forms.Button customizeApplyButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label guideAskInfoLabel;

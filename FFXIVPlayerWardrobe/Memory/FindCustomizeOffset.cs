@@ -12,6 +12,7 @@ namespace FFXIVPlayerWardrobe.Memory
 {
     public static class FindCustomizeOffset
     {
+        /*
         public static async Task<IntPtr> Find(Mem memory, string customize, bool checkCounter = true)
         {
             IntPtr customizeOffset = IntPtr.Zero;
@@ -78,5 +79,6 @@ namespace FFXIVPlayerWardrobe.Memory
 
             return isLetter || isFfAllowed;
         }
+        */
     }
 }
